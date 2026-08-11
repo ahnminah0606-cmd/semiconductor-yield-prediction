@@ -1,20 +1,15 @@
 # MinahAhn
 
-# 🛠️ Semiconductor Process Yield Prediction using Kaggle SECOM
+## 📈 3. Key Results & Impact
+* **데이터 불균형 극복**: 불량률이 매우 낮은 극단적인 환경에서 `SMOTE` 오버샘플링 기법을 적용하여 불량 검출 성능을 개선함.
+* **핵심 변수 축소**: 수백 개의 센서 데이터 중 노이즈를 제거하고 유의미한 공정 인자를 추려내어 모델의 해석력을 높임.
 
-## 1. Project Overview
-- **Goal**: 실제 반도체 제조 공정 내 대량의 결측치 및 극단적인 불균형 데이터 구조 하에서 수율(Yield) 저하를 일으키는 유의미한 센서 변수를 분류하고 예측 정확도를 확보합니다.
-- **Target JD Alignment**: 삼성전자 메모리사업부 공정기술 (Spotfire 및 데이터 통계 분석 우대 요건 충족)
+---
 
-## 2. Technical Stack
-- **Language & Environment**: Python (v3.8+), Jupyter Notebook
-- **Libraries**: Pandas, NumPy, Scikit-learn, Imbalanced-learn, XGBoost, LightGBM
-
-## 3. Key Troubleshooting Steps
-1. **Handling Class Imbalance**: 불량률 6% 미만의 극단적 불균형 해소를 위해 SMOTE 오버샘플링을 적용하여 불량 검출 재현율(Recall)을 12%에서 82%로 개선.
-2. **Feature Selection**: 590개의 센서 데이터 중 분산 임계치(Variance Threshold 0.05) 기법과 LightGBM Feature Importance 기법을 융합하여 핵심 센서 35개 추출.
-
-## 4. How to Run
-```bash
-pip install -r requirements.txt
-python src/train_model.py
+## 🔍 4. Key Troubleshooting Steps
+1. **Handling Class Imbalance (클래스 불균형 문제)**
+   * *Problem*: 정상 데이터에 비해 불량 데이터가 지나치게 적어 모델이 정상 데이터만 편향해서 학습하는 문제가 발생함.
+   * *Solution*: SMOTE 오버샘플링을 도입하여 데이터 밸런스를 조절하고, 평가 지표를 정밀하게 확인함.
+2. **Feature Selection (고차원 센서 데이터 최적화)**
+   * *Problem*: 수많은 센서 변수들로 인해 다중공선성이 생기고 모델이 무거워짐.
+   * *Solution*: 분산이 거의 없는 불필요한 변수를 1차로 걸러내고, 중요도 기반으로 핵심 공정 인자를 압축함.
