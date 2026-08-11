@@ -1,30 +1,42 @@
-# MinahAhn
-
-# ⚡ 반도체 공정 내 극단적 데이터 불균형 해결 및 센서 변수 최적화 수율 예측 프로젝트
+# ⚡ 반도체 공정 내 극단적 데이터 불균형(Class Imbalance) 해결 및 양산기술 DMI 관점의 센서 차원 축소 수율 예측 프로젝트
 
 ## 📌 1. Project Overview
-* **목표**: 실제 반도체 제조 공정의 대규모 센서 데이터 속에서 수율 저하를 일으키는 핵심 인자를 찾고, 불량 예측 정확도를 높이는 것.
-* **배경**: 반도체 데이터는 불량률이 매우 낮아 모델 학습이 어렵다는 점에 착안, 이를 해결하기 위해 다양한 샘플링 기법과 변수 최적화를 적용해 보았습니다.
+* **Goal**: 실제 반도체 제조 공정 내 대량의 결측치 및 극단적인 불균형 데이터 구조 하에서 수율(Yield) 저하를 일으키는 유의미한 센서 변수를 분류하고 예측 정확도를 확보합니다.
+* **Target JD Alignment**: 삼성전자 메모리사업부 공정기술 (Spotfire 및 데이터 통계 분석 우대 요건 충족)
 
 ---
 
 ## 🛠 2. Technical Stack
-* **Language**: Python
-* **Library**: Pandas, NumPy, Scikit-learn, XGBoost, LightGBM
-* **Environment**: Jupyter Notebook
+<p>
+  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=Python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=Pandas&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white"/>
+  <img src="https://img.shields.io/badge/LightGBM-3776AB?style=flat-square&logo=lightgbm&logoColor=white"/>
+</p>
 
 ---
 
-## 📈 3. Key Results & Impact
-* **데이터 불균형 극복**: 불량률이 매우 낮은 극단적인 환경에서 `SMOTE` 오버샘플링 기법을 적용하여 불량 검출 성능을 개선함.
-* **핵심 변수 축소**: 수백 개의 센서 데이터 중 노이즈를 제거하고 유의미한 공정 인자를 추려내어 모델의 해석력을 높임.
+## 📈 3. Key Results & Impact (성능 비교 시각화)
+
+| 실험 차수 | 적용 알고리즘 | 전처리 및 샘플링 기법 | Recall (불량 검출률) | F1-Score | 비고 |
+| :---: | :--- | :--- | :---: | :---: | :--- |
+| **01** | XGBoost (Baseline) | 결측치 중앙값 대체 | 0.12 | 0.21 | 극단적 불균형으로 불량 검출 실패 |
+| **02** | XGBoost + SMOTE | SMOTE 오버샘플링 적용 | 0.68 | 0.52 | 불량 검출력은 개선되었으나 정밀도 하락 |
+| **03** | LightGBM + SMOTE | Variance Threshold 0.05 + SMOTE | **0.82** | **0.65** | 최종 챔버 불량 역추적 최적 모델 채택 |
 
 ---
 
 ## 🔍 4. Key Troubleshooting Steps
-1. **Handling Class Imbalance (클래스 불균형 문제)**
-   * *Problem*: 정상 데이터에 비해 불량 데이터가 지나치게 적어 모델이 정상 데이터만 편향해서 학습하는 문제가 발생함.
-   * *Solution*: SMOTE 오버샘플링을 도입하여 데이터 밸런스를 조절하고, 평가 지표를 정밀하게 확인함.
-2. **Feature Selection (고차원 센서 데이터 최적화)**
-   * *Problem*: 수많은 센서 변수들로 인해 다중공선성이 생기고 모델이 무거워짐.
-   * *Solution*: 분산이 거의 없는 불필요한 변수를 1차로 걸러내고, 중요도 기반으로 핵심 공정 인자를 압축함.
+1. **Handling Class Imbalance**
+   * *Problem*: 불량률 6% 미만의 극단적인 데이터 구조로 인해 모델이 정상 데이터만 편향 학습하는 현상 발생.
+   * *Solution*: SMOTE 오버샘플링을 적용하여 Decision Boundary를 재조정하고 재현율(Recall) 지표 개선.
+2. **Feature Selection**
+   * *Problem*: 590개의 센서 데이터 중 다중공선성을 유발하는 노이즈 변수로 인해 모델 해석력 저하.
+   * *Solution*: 분산 임계치(0.05)와 LightGBM Feature Importance를 융합하여 핵심 센서 35개 도출.
+
+---
+
+## 🚀 5. How to Run
+```bash
+pip install -r requirements.txt
+python src/train_model.py
