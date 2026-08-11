@@ -10,8 +10,8 @@
 <p>
   <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=Python&logoColor=white"/>
   <img src="https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=Pandas&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spotfire-28A745?style=flat-square&logo=analytics&logoColor=white"/>
   <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white"/>
-  <img src="https://img.shields.io/badge/LightGBM-3776AB?style=flat-square&logo=lightgbm&logoColor=white"/>
 </p>
 
 ---
