@@ -2,8 +2,7 @@
 
 ## 1. Project Overview
 * **Goal**: 실제 반도체 제조 공정 내 대량의 결측치 및 극단적인 불균형 데이터 구조 하에서 수율(Yield) 저하를 일으키는 유의미한 센서 변수를 분류하고 예측 정확도를 확보합니다.
-* **Target JD Alignment**: 삼성전자 메모리사업부 공정기술 (Spotfire 및 데이터 통계 분석 우대 요건 충족)
-
+  
 ---
 
 ## 2. Technical Stack
