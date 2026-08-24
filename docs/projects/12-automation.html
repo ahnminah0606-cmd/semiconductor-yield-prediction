@@ -3,96 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12. Wafer Analysis Automation</title>
+
+<title>12. Wafer Map Analysis Automation</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard",
-                 "Noto Sans KR", "Segoe UI", sans-serif;
-    background: #ffffff;
-    color: #18181b;
-    line-height: 1.7;
-}
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont,
+                     "Pretendard", "Noto Sans KR",
+                     "Segoe UI", sans-serif;
+        background: #ffffff;
+        color: #18181b;
+        line-height: 1.75;
+    }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 24px 100px;
-}
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+    }
 
-.back {
-    display: inline-block;
-    margin-bottom: 55px;
-    color: #666;
-    text-decoration: none;
-    font-size: 14px;
-}
+    a {
+        text-decoration: none;
+    }
 
-.back:hover {
-    color: #111;
-}
+    .back {
+        display: inline-block;
+        margin-bottom: 55px;
+        color: #666666;
+        font-size: 14px;
+    }
 
-.number {
-    color: #2563eb;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+    .back:hover {
+        color: #111111;
+    }
 
-h1 {
-    margin: 10px 0 18px;
-    font-size: 42px;
-    line-height: 1.2;
-    letter-spacing: -1.5px;
-}
+    .project-number {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
 
-.summary {
-    max-width: 720px;
-    color: #666;
-    font-size: 18px;
-}
+    h1 {
+        margin: 10px 0 18px;
+        font-size: 42px;
+        line-height: 1.2;
+        letter-spacing: -1.5px;
+    }
 
-section {
-    padding: 38px 0;
-    border-top: 1px solid #eeeeee;
-}
+    .summary {
+        max-width: 760px;
+        color: #666666;
+        font-size: 18px;
+        margin-bottom: 55px;
+    }
 
-.first {
-    margin-top: 55px;
-}
+    section {
+        padding: 38px 0;
+        border-top: 1px solid #eeeeee;
+    }
 
-h2 {
-    margin: 0 0 15px;
-    font-size: 22px;
-}
+    h2 {
+        font-size: 23px;
+        margin: 0 0 17px;
+        letter-spacing: -0.5px;
+    }
 
-p {
-    color: #555;
-}
+    h3 {
+        font-size: 17px;
+        margin-top: 25px;
+    }
 
-.tag {
-    display: inline-block;
-    margin: 5px 5px 0 0;
-    padding: 7px 11px;
-    background: #f6f6f6;
-    border: 1px solid #e5e5e5;
-    border-radius: 6px;
-    font-size: 13px;
-    color: #444;
-}
+    p {
+        color: #555555;
+    }
 
-.notice {
-    padding: 18px 20px;
-    background: #f8fafc;
-    border: 1px solid #e7e7e7;
-    border-radius: 8px;
-    color: #666;
-}
+    .info-box {
+        background: #f8fafc;
+        border: 1px solid #e7e7e7;
+        border-radius: 10px;
+        padding: 22px;
+        color: #4b5563;
+        margin-top: 15px;
+    }
+
+    .workflow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .workflow-item {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px 12px;
+        text-align: center;
+        font-size: 13px;
+        background: #ffffff;
+    }
+
+    .point {
+        border-left: 3px solid #2563eb;
+        padding-left: 17px;
+        margin-top: 24px;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .tag {
+        background: #f5f5f5;
+        border: 1px solid #e2e2e2;
+        border-radius: 6px;
+        padding: 7px 11px;
+        color: #444444;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .github-link {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        background: #18181b;
+        color: #ffffff;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .github-link:hover {
+        background: #333333;
+    }
+
+    @media (max-width: 700px) {
+        h1 {
+            font-size: 34px;
+        }
+
+        .workflow {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
 </style>
 </head>
 
@@ -104,52 +166,296 @@ p {
         ← 전체 프로젝트
     </a>
 
-    <div class="number">
+    <div class="project-number">
         PROJECT 12
     </div>
 
-    <h1>Wafer Analysis Automation</h1>
+    <h1>Wafer Map Analysis Automation</h1>
 
     <p class="summary">
-        여러 Lot의 웨이퍼 분석과 리포트 생성을 자동화한 프로젝트입니다.
+        여러 Lot과 Wafer의 데이터를 자동으로 분석하여
+        Wafer Map 생성, 불량 패턴 분류, 수율 계산 및
+        PDF 리포트 저장까지 연결한 배치 자동화 프로젝트입니다.
     </p>
 
-    <section class="first">
-        <h2>Analysis Objective</h2>
+
+    <section>
+
+        <h2>Automation Objective</h2>
+
         <p>
-            반도체 공정 데이터를 Python으로 분석하고,
-            공정 특성과 품질 및 수율에 영향을 주는 요인을
-            데이터 기반으로 확인하는 것을 목적으로 합니다.
+            실제 반도체 제조 환경에서는 하루에도 많은 Lot과 Wafer가 처리되므로
+            각 Wafer Map을 사람이 하나씩 확인하고 리포트를 작성하는 방식에는
+            시간적인 한계가 있습니다.
         </p>
-    </section>
 
-    <section>
-        <h2>Tools</h2>
+        <div class="info-box">
+            <strong>핵심 자동화 목표</strong><br><br>
 
-        <span class="tag">Python</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">Jupyter Notebook</span>
-    </section>
-
-    <section>
-        <h2>Analysis Result</h2>
-
-        <div class="notice">
-            이 영역에는 해당 Jupyter Notebook에서 생성한
-            실제 그래프와 분석 결과를 추가할 예정입니다.
+            Lot 정보를 입력하면 Wafer 데이터를 생성·분석하고,
+            패턴 분류와 Yield 계산을 수행한 뒤
+            여러 Wafer Map을 하나의 PDF 리포트로
+            자동 저장하도록 분석 파이프라인을 구성합니다.
         </div>
+
     </section>
 
+
     <section>
+
+        <h2>Automation Workflow</h2>
+
+        <div class="workflow">
+
+            <div class="workflow-item">
+                01<br>
+                Lot Input
+            </div>
+
+            <div class="workflow-item">
+                02<br>
+                Wafer Analysis
+            </div>
+
+            <div class="workflow-item">
+                03<br>
+                Pattern & Yield
+            </div>
+
+            <div class="workflow-item">
+                04<br>
+                PDF Report
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Core Functions</h2>
+
+        <div class="point">
+
+            <h3>1. Multi-Lot Batch Processing</h3>
+
+            <p>
+                Lot ID와 Defect Mode를 리스트 형태로 입력하여
+                여러 Lot을 반복문으로 순차 처리하도록 구성했습니다.
+            </p>
+
+            <p>
+                이를 통해 Lot마다 동일한 분석 코드를
+                반복 실행할 필요 없이 한 번의 함수 호출로
+                여러 Wafer를 처리할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>2. Automatic Wafer Generation</h3>
+
+            <p>
+                각 Lot에서 설정된 Wafer 수만큼 샘플 데이터를 생성하고
+                Ring, Center, Scratch, Random 등의
+                불량 패턴을 적용하도록 구성했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>3. Pattern Classification</h3>
+
+            <p>
+                생성된 Wafer DataFrame을 패턴 분류 함수에 전달하여
+                Wafer별 불량 패턴과 Yield를 자동으로 분석하도록 연결했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>4. Lot Average Yield</h3>
+
+            <p>
+                개별 Wafer의 Yield를 저장한 뒤
+                Lot 단위 평균 Yield를 자동 계산하여
+                리포트 하단에 표시하도록 구현했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>5. PDF Report Generation</h3>
+
+            <p>
+                Matplotlib의 PdfPages를 사용하여
+                표지 페이지와 Lot별 Wafer Map 페이지를
+                하나의 PDF 파일로 자동 저장하도록 구현했습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>PDF Report Structure</h2>
+
+        <div class="info-box">
+            <strong>Cover Page</strong><br>
+            리포트 제목 / 생성일시 / 총 Lot 수 / Lot당 Wafer 수
+            <br><br>
+
+            <strong>Lot Page</strong><br>
+            Lot ID / Defect Pattern / Wafer Map / Wafer ID
+            <br><br>
+
+            <strong>Yield Summary</strong><br>
+            각 Wafer Yield를 기반으로 계산한 Lot 평균 수율
+            <br><br>
+
+            <strong>PDF Metadata</strong><br>
+            Title 및 Author 정보를 PDF 내부 메타데이터로 저장
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Automation Result</h2>
+
+        <div class="point">
+
+            <h3>반복 작업 감소</h3>
+
+            <p>
+                Wafer별 분석 → 시각화 → 수율 계산 → PDF 저장 과정을
+                하나의 함수로 연결하여 반복적인 수작업을 줄였습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Lot 단위 분석</h3>
+
+            <p>
+                개별 Wafer 결과뿐 아니라 여러 Wafer의 Yield를
+                Lot 단위로 집계하여 공정 상태를 한 번에
+                비교할 수 있도록 구성했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>자동 리포팅</h3>
+
+            <p>
+                분석 결과를 화면 출력으로 끝내지 않고
+                실제 공유 가능한 PDF 형태로 저장하여
+                분석부터 보고서 생성까지 연결했습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
         <h2>Engineering Insight</h2>
 
+        <div class="point">
+
+            <h3>Fab 데이터 자동화 확장</h3>
+
+            <p>
+                실제 환경에서는 샘플 데이터 생성 부분을
+                MES, 검사 장비 또는 공정 데이터베이스에서
+                가져온 실제 Wafer 데이터로 교체할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Low Yield Lot Monitoring</h3>
+
+            <p>
+                Lot 평균 Yield가 특정 기준 이하로 내려가는 경우
+                자동으로 Warning을 표시하거나
+                이상 Lot 목록을 별도로 생성하는 구조로 확장할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Pattern 기반 RCA 연결</h3>
+
+            <p>
+                자동 분류된 Ring, Center, Scratch 등의 패턴을
+                Tool, Chamber, Recipe 및 공정 이력과 연결하면
+                Root Cause Analysis의 우선순위를 정하는 데 활용할 수 있습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Tools & Technologies</h2>
+
+        <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">PdfPages</span>
+            <span class="tag">Batch Processing</span>
+            <span class="tag">Wafer Map</span>
+            <span class="tag">Pattern Classification</span>
+            <span class="tag">Report Automation</span>
+            <span class="tag">Jupyter Notebook</span>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Source Notebook</h2>
+
         <p>
-            분석 결과를 공정 관점에서 해석하고,
-            이상 원인 탐색 및 공정 개선에 활용할 수 있는
-            인사이트를 정리합니다.
+            Wafer 분석 및 PDF 리포트 자동화 코드는
+            GitHub Jupyter Notebook에서 확인할 수 있습니다.
         </p>
+
+        <a
+            class="github-link"
+            href="https://github.com/ahnminah0606-cmd/semiconductor-yield-prediction/blob/main/12.wafer_map_analysis_automation.ipynb"
+            target="_blank"
+        >
+            View Notebook on GitHub →
+        </a>
+
     </section>
 
 </div>
