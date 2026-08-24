@@ -1,28 +1,654 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Semiconductor Data Analysis Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Semiconductor Data Analysis Portfolio</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard",
+                 "Noto Sans KR", "Segoe UI", sans-serif;
+    background: #f5f8fc;
+    color: #172033;
+    line-height: 1.65;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: rgba(5, 20, 48, 0.95);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav {
+    max-width: 1180px;
+    margin: auto;
+    padding: 17px 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #62a8ff;
+}
+
+nav a {
+    color: #cbd8ed;
+    margin-left: 24px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: white;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background:
+        radial-gradient(circle at 80% 30%,
+            rgba(32,113,255,.30), transparent 30%),
+        radial-gradient(circle at 20% 80%,
+            rgba(36,92,190,.20), transparent 35%),
+        linear-gradient(135deg,#04132e,#071e46 55%,#092b63);
+
+    color: white;
+    padding: 90px 24px 100px;
+    overflow: hidden;
+}
+
+.hero-inner {
+    max-width: 1180px;
+    margin: auto;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid rgba(111,174,255,.4);
+    background: rgba(29,91,190,.18);
+    color: #9bc8ff;
+
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-size: 13px;
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-size: clamp(42px,6vw,70px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+    max-width: 850px;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg,#63a7ff,#9b8cff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 700px;
+    color: #bdcbe1;
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 19px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.btn-primary {
+    background: #2878ff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1466ed;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid #506784;
+    color: #d8e4f5;
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,.08);
+}
+
+
+/* =========================
+   COMMON
+========================= */
+
+.container {
+    max-width: 1180px;
+    margin: auto;
+    padding: 75px 24px;
+}
+
+.section-label {
+    color: #2674eb;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    margin-bottom: 7px;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.section-desc {
+    color: #66748a;
+    margin-bottom: 34px;
+}
+
+
+/* =========================
+   FEATURED
+========================= */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    background: white;
+    border: 1px solid #dde5ef;
+    border-radius: 17px;
+    padding: 30px;
+    box-shadow: 0 8px 28px rgba(31,55,89,.07);
+    transition: .25s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 38px rgba(31,55,89,.13);
+}
+
+.feature-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    background: #edf5ff;
+    border-radius: 13px;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #69778b;
+    min-height: 52px;
+    margin-bottom: 20px;
+}
+
+.open-link {
+    color: #176be8;
+    font-weight: 800;
+}
+
+.open-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-section {
+    background: white;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
+
+.project-card {
+    border: 1px solid #e1e7ef;
+    border-radius: 14px;
+    padding: 22px;
+    background: #fbfcfe;
+    transition: .2s;
+}
+
+.project-card:hover {
+    border-color: #92baf3;
+    transform: translateY(-3px);
+    box-shadow: 0 9px 24px rgba(31,55,89,.08);
+}
+
+.number {
+    display: inline-block;
+    color: #176be8;
+    background: #eaf3ff;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.project-card h3 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.project-card p {
+    font-size: 14px;
+    color: #718096;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills {
+    background: #071a3a;
+    color: white;
+}
+
+.skills .section-desc {
+    color: #9aabc5;
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.skill {
+    padding: 21px;
+    border: 1px solid #29466e;
+    border-radius: 12px;
+    background: rgba(255,255,255,.035);
+}
+
+.skill strong {
+    display: block;
+    color: #72afff;
+    margin-bottom: 6px;
+}
+
+.skill span {
+    color: #bac7d9;
+    font-size: 14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #041126;
+    color: #8495ad;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 13px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 65px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .feature-grid,
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+</style>
 </head>
+
+
 <body>
 
-    <h1>Semiconductor Data Analysis Portfolio</h1>
+<header>
+    <div class="nav">
+        <div class="logo">
+            ◈ Semiconductor <span>Data Lab</span>
+        </div>
 
-    <p>반도체 공정 및 수율 데이터 분석 포트폴리오입니다.</p>
+        <nav>
+            <a href="#analysis">Interactive</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Tech Stack</a>
+        </nav>
+    </div>
+</header>
 
-    <h2>Interactive Analysis</h2>
 
-    <p>
-        <a href="scatter_matrix.html">
-            CVD Process Scatter Matrix
-        </a>
+<section class="hero">
+    <div class="hero-inner">
+
+        <div class="badge">
+            SEMICONDUCTOR · DATA ANALYTICS · YIELD
+        </div>
+
+        <h1>
+            Semiconductor<br>
+            Data Analysis <span>Portfolio</span>
+        </h1>
+
+        <p>
+            반도체 제조 공정 데이터를 기반으로 수율 저하 요인,
+            공정 이상 및 웨이퍼 불량 패턴을 분석하고
+            데이터 시각화를 통해 공정 인사이트를 도출한 프로젝트입니다.
+        </p>
+
+        <div class="hero-buttons">
+            <a class="btn btn-primary"
+               href="#analysis">
+                Interactive Analysis →
+            </a>
+
+            <a class="btn btn-outline"
+               href="#projects">
+                프로젝트 보기
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- INTERACTIVE -->
+
+<section id="analysis">
+<div class="container">
+
+    <div class="section-label">FEATURED ANALYSIS</div>
+    <h2 class="section-title">Interactive Analysis</h2>
+
+    <p class="section-desc">
+        Plotly 기반 인터랙티브 시각화를 직접 조작하여
+        공정 변수와 웨이퍼의 공간적 불량 패턴을 확인할 수 있습니다.
     </p>
 
-    <p>
-        <a href="wafer_heatmap.html">
-            Interactive Wafer Heatmap
-        </a>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">▦</div>
+
+            <h3>Interactive Wafer Heatmap</h3>
+
+            <p>
+                웨이퍼 Die 좌표별 수율 점수를 시각화하여
+                Edge Ring, Center 및 Random 불량의 공간적 분포를
+                분석합니다.
+            </p>
+
+            <a class="open-link"
+               href="wafer_heatmap.html">
+                웨이퍼 히트맵 열기 →
+            </a>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">⠿</div>
+
+            <h3>CVD Process Scatter Matrix</h3>
+
+            <p>
+                Temperature, Pressure, Gas Flow, Thickness 간의
+                관계를 인터랙티브 산점도 행렬로 탐색합니다.
+            </p>
+
+            <a class="open-link"
+               href="scatter_matrix.html">
+                Scatter Matrix 열기 →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects" class="projects-section">
+<div class="container">
+
+    <div class="section-label">PROJECT ARCHIVE</div>
+
+    <h2 class="section-title">
+        Semiconductor Analysis Projects
+    </h2>
+
+    <p class="section-desc">
+        반도체 공정 분석부터 웨이퍼 패턴 분석 및
+        인터랙티브 시각화까지 단계적으로 확장한 분석 프로젝트입니다.
     </p>
+
+
+    <div class="project-grid">
+
+        <div class="project-card">
+            <span class="number">01</span>
+            <h3>SECOM Yield Prediction</h3>
+            <p>SECOM 데이터를 활용한 반도체 수율 예측 및 데이터 분석</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">02</span>
+            <h3>Process Analysis</h3>
+            <p>반도체 제조 공정 데이터의 분포 및 공정 변수 분석</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">03</span>
+            <h3>Etch Chamber ANOVA</h3>
+            <p>Etch Chamber 간 공정 차이를 통계적으로 검증</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">04</span>
+            <h3>Thin Film Wafer Map</h3>
+            <p>박막 공정의 웨이퍼 위치별 특성 시각화</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">05</span>
+            <h3>Cleaning Particle Anomaly</h3>
+            <p>세정 공정 Particle 이상치 및 불량 패턴 분석</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">06</span>
+            <h3>CMP Process Analysis</h3>
+            <p>CMP 공정 조건과 품질 특성 간 관계 분석</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">07</span>
+            <h3>Ion Implant & Anneal</h3>
+            <p>이온주입 및 열처리 공정 파라미터 분석</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">08</span>
+            <h3>Diffusion & Oxidation</h3>
+            <p>확산·산화 공정 조건과 결과 변수 분석</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">09</span>
+            <h3>Inspection & Metrology</h3>
+            <p>검사·계측 데이터와 수율 간 관계 분석</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">10</span>
+            <h3>Wafer Map Visualizer</h3>
+            <p>Matplotlib 기반 웨이퍼 불량 공간 패턴 시각화</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">11</span>
+            <h3>Wafer Pattern Classifier</h3>
+            <p>Edge Ring, Center, Scratch 등 불량 패턴 자동 분류</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">12</span>
+            <h3>Wafer Analysis Automation</h3>
+            <p>여러 Lot의 웨이퍼 분석 및 리포트 자동화</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">13</span>
+            <h3>Interactive Process Analysis</h3>
+            <p>Plotly 기반 공정 파라미터 인터랙티브 분석</p>
+        </div>
+
+        <div class="project-card">
+            <span class="number">14</span>
+            <h3>Interactive Wafer Heatmap</h3>
+            <p>Die 좌표 기반 인터랙티브 웨이퍼 수율 히트맵</p>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills" class="skills">
+
+<div class="container">
+
+    <div class="section-label">TECH STACK</div>
+
+    <h2 class="section-title">
+        Analysis & Visualization
+    </h2>
+
+    <p class="section-desc">
+        데이터 처리부터 통계 분석, 웨이퍼 시각화 및
+        웹 기반 인터랙티브 결과물까지 구현했습니다.
+    </p>
+
+
+    <div class="skill-grid">
+
+        <div class="skill">
+            <strong>Python</strong>
+            <span>Data Analysis & Automation</span>
+        </div>
+
+        <div class="skill">
+            <strong>Pandas · NumPy</strong>
+            <span>Data Processing</span>
+        </div>
+
+        <div class="skill">
+            <strong>Matplotlib</strong>
+            <span>Wafer Visualization</span>
+        </div>
+
+        <div class="skill">
+            <strong>Plotly</strong>
+            <span>Interactive Visualization</span>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<footer>
+    Semiconductor Process & Yield Data Analysis Portfolio
+</footer>
 
 </body>
 </html>
