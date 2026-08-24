@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>13. Interactive Process Analysis</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont,
+                     "Pretendard", "Noto Sans KR",
+                     "Segoe UI", sans-serif;
+        background: #ffffff;
+        color: #18181b;
+        line-height: 1.75;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .back {
+        display: inline-block;
+        margin-bottom: 55px;
+        color: #666666;
+        font-size: 14px;
+    }
+
+    .back:hover {
+        color: #111111;
+    }
+
+    .project-number {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    h1 {
+        margin: 10px 0 18px;
+        font-size: 42px;
+        line-height: 1.2;
+        letter-spacing: -1.5px;
+    }
+
+    .summary {
+        max-width: 760px;
+        color: #666666;
+        font-size: 18px;
+        margin-bottom: 55px;
+    }
+
+    section {
+        padding: 38px 0;
+        border-top: 1px solid #eeeeee;
+    }
+
+    h2 {
+        font-size: 23px;
+        margin: 0 0 17px;
+        letter-spacing: -0.5px;
+    }
+
+    h3 {
+        font-size: 17px;
+        margin-top: 25px;
+    }
+
+    p {
+        color: #555555;
+    }
+
+    .info-box {
+        background: #f8fafc;
+        border: 1px solid #e7e7e7;
+        border-radius: 10px;
+        padding: 22px;
+        color: #4b5563;
+        margin-top: 15px;
+    }
+
+    .workflow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .workflow-item {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px 12px;
+        text-align: center;
+        font-size: 13px;
+        background: #ffffff;
+    }
+
+    .point {
+        border-left: 3px solid #2563eb;
+        padding-left: 17px;
+        margin-top: 24px;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .tag {
+        background: #f5f5f5;
+        border: 1px solid #e2e2e2;
+        border-radius: 6px;
+        padding: 7px 11px;
+        color: #444444;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .demo-box {
+        margin-top: 20px;
+        padding: 28px;
+        border: 1px solid #dedede;
+        border-radius: 12px;
+        background: #ffffff;
+    }
+
+    .demo-button {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 11px 17px;
+        background: #18181b;
+        color: #ffffff;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 650;
+    }
+
+    .demo-button:hover {
+        background: #333333;
+    }
+
+    .github-link {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        border: 1px solid #d8d8d8;
+        color: #333333;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .github-link:hover {
+        background: #f7f7f7;
+    }
+
+    @media (max-width: 700px) {
+        h1 {
+            font-size: 34px;
+        }
+
+        .workflow {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="../index.html#projects" class="back">
+        ← 전체 프로젝트
+    </a>
+
+    <div class="project-number">
+        PROJECT 13
+    </div>
+
+    <h1>Interactive Process Analysis</h1>
+
+    <p class="summary">
+        Plotly를 활용하여 반도체 공정 파라미터 간의 관계를
+        브라우저에서 직접 탐색할 수 있도록 구현한
+        인터랙티브 데이터 시각화 프로젝트입니다.
+    </p>
+
+
+    <section>
+
+        <h2>Analysis Objective</h2>
+
+        <p>
+            정적인 그래프는 전체적인 경향을 확인하기에는 유용하지만,
+            특정 공정 조건의 세부 값을 직접 확인하기에는 한계가 있습니다.
+        </p>
+
+        <div class="info-box">
+            <strong>핵심 목표</strong><br><br>
+
+            Temperature, Pressure, Gas Flow, Thickness와 같은
+            공정 변수를 하나의 Scatter Matrix에서 비교하고,
+            마우스 Hover 및 Zoom 기능을 활용해
+            개별 데이터 포인트를 직접 탐색할 수 있도록 구현합니다.
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Analysis Workflow</h2>
+
+        <div class="workflow">
+
+            <div class="workflow-item">
+                01<br>
+                Sample Data
+            </div>
+
+            <div class="workflow-item">
+                02<br>
+                Process Variables
+            </div>
+
+            <div class="workflow-item">
+                03<br>
+                Scatter Matrix
+            </div>
+
+            <div class="workflow-item">
+                04<br>
+                HTML Deploy
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Process Variables</h2>
+
+        <div class="info-box">
+            <strong>Temperature_C</strong><br>
+            공정 온도
+            <br><br>
+
+            <strong>Pressure_Torr</strong><br>
+            Chamber Pressure
+            <br><br>
+
+            <strong>GasFlow_sccm</strong><br>
+            Gas Flow
+            <br><br>
+
+            <strong>Thickness_A</strong><br>
+            박막 증착 두께
+            <br><br>
+
+            <strong>Yield / Equipment</strong><br>
+            PASS·FAIL 및 설비 ID 구분
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Analysis Result</h2>
+
+        <div class="point">
+
+            <h3>1. 공정 변수 동시 비교</h3>
+
+            <p>
+                Scatter Matrix를 이용하여 여러 공정 변수의
+                두 변수 조합을 한 화면에서 동시에 비교하도록 구성했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>2. PASS / FAIL 구분</h3>
+
+            <p>
+                Thickness가 목표 범위에 들어오는지를 기준으로
+                PASS와 FAIL을 구분하고 색상으로 시각화했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>3. Equipment 구분</h3>
+
+            <p>
+                CVD_01, CVD_02, CVD_03 설비를 서로 다른 Symbol로 표시하여
+                설비별 데이터 분포 차이를 동시에 확인할 수 있도록 했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>4. Interactive Exploration</h3>
+
+            <p>
+                Plotly의 Hover, Zoom, Pan 기능을 이용해
+                특정 데이터 포인트의 공정 조건을 직접 확인할 수 있습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Interactive Demo</h2>
+
+        <div class="demo-box">
+
+            <h3 style="margin-top:0;">
+                CVD Process Scatter Matrix
+            </h3>
+
+            <p>
+                아래 버튼을 누르면 실제 Plotly 기반
+                인터랙티브 공정 분석 화면으로 이동합니다.
+            </p>
+
+            <a
+                class="demo-button"
+                href="../scatter_matrix.html"
+            >
+                Open Interactive Scatter Matrix →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Engineering Insight</h2>
+
+        <div class="point">
+
+            <h3>EDA 효율 향상</h3>
+
+            <p>
+                여러 개의 개별 Scatter Plot을 하나씩 확인하는 대신
+                Scatter Matrix를 사용하면 공정 변수 간 관계를
+                빠르게 탐색할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>설비별 분포 비교</h3>
+
+            <p>
+                Equipment 정보를 함께 표현하면 특정 설비에서만
+                데이터 분포가 치우치거나 FAIL이 집중되는지
+                시각적으로 확인할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>웹 기반 분석 공유</h3>
+
+            <p>
+                Plotly 결과를 HTML 파일로 저장하면
+                Python 환경 없이도 브라우저에서 동일한 분석 결과를
+                확인할 수 있어 포트폴리오 및 분석 공유에 활용할 수 있습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Tools & Technologies</h2>
+
+        <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Plotly Express</span>
+            <span class="tag">Scatter Matrix</span>
+            <span class="tag">Interactive Visualization</span>
+            <span class="tag">HTML</span>
+            <span class="tag">GitHub Pages</span>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Source & Demo</h2>
+
+        <p>
+            분석 Notebook과 실제 인터랙티브 결과를
+            각각 확인할 수 있습니다.
+        </p>
+
+        <a
+            class="github-link"
+            href="https://github.com/ahnminah0606-cmd/semiconductor-yield-prediction/blob/main/13.plotly_interactive_process_analysis.ipynb"
+            target="_blank"
+        >
+            View Notebook on GitHub →
+        </a>
+
+        &nbsp;
+
+        <a
+            class="demo-button"
+            href="../scatter_matrix.html"
+        >
+            Open Live Demo →
+        </a>
+
+    </section>
+
+</div>
+
+</body>
+</html>
