@@ -3,96 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>03. Etch Chamber ANOVA</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard",
-                 "Noto Sans KR", "Segoe UI", sans-serif;
-    background: #ffffff;
-    color: #18181b;
-    line-height: 1.7;
-}
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont,
+                     "Pretendard", "Noto Sans KR",
+                     "Segoe UI", sans-serif;
+        background: #ffffff;
+        color: #18181b;
+        line-height: 1.75;
+    }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 24px 100px;
-}
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+    }
 
-.back {
-    display: inline-block;
-    margin-bottom: 55px;
-    color: #666;
-    text-decoration: none;
-    font-size: 14px;
-}
+    a {
+        text-decoration: none;
+    }
 
-.back:hover {
-    color: #111;
-}
+    .back {
+        display: inline-block;
+        margin-bottom: 55px;
+        color: #666666;
+        font-size: 14px;
+    }
 
-.number {
-    color: #2563eb;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+    .back:hover {
+        color: #111111;
+    }
 
-h1 {
-    margin: 10px 0 18px;
-    font-size: 42px;
-    line-height: 1.2;
-    letter-spacing: -1.5px;
-}
+    .project-number {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
 
-.summary {
-    max-width: 720px;
-    color: #666;
-    font-size: 18px;
-}
+    h1 {
+        margin: 10px 0 18px;
+        font-size: 42px;
+        line-height: 1.2;
+        letter-spacing: -1.5px;
+    }
 
-section {
-    padding: 38px 0;
-    border-top: 1px solid #eeeeee;
-}
+    .summary {
+        max-width: 760px;
+        color: #666666;
+        font-size: 18px;
+        margin-bottom: 55px;
+    }
 
-.first {
-    margin-top: 55px;
-}
+    section {
+        padding: 38px 0;
+        border-top: 1px solid #eeeeee;
+    }
 
-h2 {
-    margin: 0 0 15px;
-    font-size: 22px;
-}
+    h2 {
+        font-size: 23px;
+        margin: 0 0 17px;
+        letter-spacing: -0.5px;
+    }
 
-p {
-    color: #555;
-}
+    h3 {
+        font-size: 17px;
+        margin-top: 25px;
+    }
 
-.tag {
-    display: inline-block;
-    margin: 5px 5px 0 0;
-    padding: 7px 11px;
-    background: #f6f6f6;
-    border: 1px solid #e5e5e5;
-    border-radius: 6px;
-    font-size: 13px;
-    color: #444;
-}
+    p {
+        color: #555555;
+    }
 
-.notice {
-    padding: 18px 20px;
-    background: #f8fafc;
-    border: 1px solid #e7e7e7;
-    border-radius: 8px;
-    color: #666;
-}
+    .info-box {
+        background: #f8fafc;
+        border: 1px solid #e7e7e7;
+        border-radius: 10px;
+        padding: 22px;
+        color: #4b5563;
+        margin-top: 15px;
+    }
+
+    .result-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .result-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 9px;
+        padding: 20px;
+        background: white;
+    }
+
+    .result-label {
+        color: #777777;
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+
+    .result-value {
+        font-size: 27px;
+        font-weight: 750;
+        color: #18181b;
+    }
+
+    .workflow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .workflow-item {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px 12px;
+        text-align: center;
+        font-size: 13px;
+        background: white;
+    }
+
+    .point {
+        border-left: 3px solid #2563eb;
+        padding-left: 17px;
+        margin-top: 22px;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .tag {
+        background: #f5f5f5;
+        border: 1px solid #e2e2e2;
+        border-radius: 6px;
+        padding: 7px 11px;
+        color: #444444;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .github-link {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        background: #18181b;
+        color: #ffffff;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .github-link:hover {
+        background: #333333;
+    }
+
+    @media (max-width: 700px) {
+        h1 {
+            font-size: 34px;
+        }
+
+        .result-grid,
+        .workflow {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 </head>
 
@@ -104,52 +193,217 @@ p {
         ← 전체 프로젝트
     </a>
 
-    <div class="number">
+    <div class="project-number">
         PROJECT 03
     </div>
 
-    <h1>Etch Chamber ANOVA</h1>
+    <h1>
+        Etch Chamber ANOVA
+    </h1>
 
     <p class="summary">
-        Etch Chamber 간 공정 결과 차이를 통계적으로 검증한 프로젝트입니다.
+        식각 공정의 Chamber별 Etch Rate 차이가
+        실제로 통계적으로 유의한지 검증하고,
+        설비 간 편차 여부를 분석한 프로젝트입니다.
     </p>
 
-    <section class="first">
+
+    <section>
+
         <h2>Analysis Objective</h2>
+
         <p>
-            반도체 공정 데이터를 Python으로 분석하고,
-            공정 특성과 품질 및 수율에 영향을 주는 요인을
-            데이터 기반으로 확인하는 것을 목적으로 합니다.
+            동일한 Recipe 조건에서도 Chamber 상태나 설비 특성 차이에 따라
+            Etch Rate가 달라질 수 있습니다.
+            따라서 Chamber 간 평균 차이가 우연에 의한 것인지,
+            실제 공정 편차인지 통계적으로 확인하는 것을 목표로 했습니다.
         </p>
-    </section>
 
-    <section>
-        <h2>Tools</h2>
-
-        <span class="tag">Python</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">Jupyter Notebook</span>
-    </section>
-
-    <section>
-        <h2>Analysis Result</h2>
-
-        <div class="notice">
-            이 영역에는 해당 Jupyter Notebook에서 생성한
-            실제 그래프와 분석 결과를 추가할 예정입니다.
+        <div class="info-box">
+            핵심 질문:<br><br>
+            <strong>
+                Chamber A, B, C의 Etch Rate 평균에
+                통계적으로 유의한 차이가 존재하는가?
+            </strong>
         </div>
+
     </section>
 
+
     <section>
+
+        <h2>Analysis Workflow</h2>
+
+        <div class="workflow">
+
+            <div class="workflow-item">
+                01<br>
+                Chamber Grouping
+            </div>
+
+            <div class="workflow-item">
+                02<br>
+                Distribution Check
+            </div>
+
+            <div class="workflow-item">
+                03<br>
+                One-Way ANOVA
+            </div>
+
+            <div class="workflow-item">
+                04<br>
+                Tukey HSD
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Statistical Result</h2>
+
+        <div class="result-grid">
+
+            <div class="result-card">
+                <div class="result-label">
+                    F-statistic
+                </div>
+
+                <div class="result-value">
+                    26.6595
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-label">
+                    p-value
+                </div>
+
+                <div class="result-value">
+                    0.000000
+                </div>
+            </div>
+
+        </div>
+
+        <div class="point">
+
+            <h3>ANOVA Interpretation</h3>
+
+            <p>
+                p-value가 0.05보다 작으므로
+                Chamber별 Etch Rate 평균이 모두 동일하다는
+                귀무가설을 기각했습니다.
+            </p>
+
+            <p>
+                즉, <strong>Chamber 간 Etch Rate에는
+                통계적으로 유의한 차이가 존재</strong>한다고 판단했습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Post-hoc Analysis</h2>
+
+        <p>
+            ANOVA는 전체 Chamber 간 차이 존재 여부는 알려주지만,
+            어느 Chamber 조합에서 차이가 발생하는지는 직접 알려주지 않습니다.
+        </p>
+
+        <div class="info-box">
+            따라서 ANOVA 이후
+            <strong>Tukey HSD 사후검정</strong>을 적용하여
+            Chamber 쌍별 평균 차이를 비교하도록 분석 구조를 구성했습니다.
+        </div>
+
+    </section>
+
+
+    <section>
+
         <h2>Engineering Insight</h2>
 
+        <div class="point">
+
+            <h3>Chamber Matching 관점</h3>
+
+            <p>
+                동일 Recipe에서도 Chamber별 Etch Rate가 유의하게 다르다면
+                설비 간 Chamber Matching 상태를 점검할 필요가 있습니다.
+            </p>
+
+        </div>
+
+        <div class="point">
+
+            <h3>원인 후보</h3>
+
+            <p>
+                실제 Fab 환경에서는 Chamber별 PM 이력,
+                RF 조건, Gas Flow, Pressure,
+                부품 Aging 등의 설비 상태를 함께 확인하여
+                편차 원인을 추적할 수 있습니다.
+            </p>
+
+        </div>
+
+        <div class="point">
+
+            <h3>공정 관리 활용</h3>
+
+            <p>
+                통계 검정 결과를 단순 숫자로 끝내지 않고
+                Chamber별 공정 편차 관리와 Recipe 보정,
+                설비 점검 우선순위 결정에 연결할 수 있습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Tools & Technologies</h2>
+
+        <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">SciPy</span>
+            <span class="tag">Statsmodels</span>
+            <span class="tag">ANOVA</span>
+            <span class="tag">Tukey HSD</span>
+            <span class="tag">Jupyter Notebook</span>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Source Notebook</h2>
+
         <p>
-            분석 결과를 공정 관점에서 해석하고,
-            이상 원인 탐색 및 공정 개선에 활용할 수 있는
-            인사이트를 정리합니다.
+            실제 ANOVA 및 Tukey HSD 분석 코드는
+            GitHub Jupyter Notebook에서 확인할 수 있습니다.
         </p>
+
+        <a
+            class="github-link"
+            href="https://github.com/ahnminah0606-cmd/semiconductor-yield-prediction/blob/main/03.etch_chamber_anova.ipynb"
+            target="_blank"
+        >
+            View Notebook on GitHub →
+        </a>
+
     </section>
 
 </div>

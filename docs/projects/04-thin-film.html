@@ -3,96 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>04. Thin Film Wafer Map</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard",
-                 "Noto Sans KR", "Segoe UI", sans-serif;
-    background: #ffffff;
-    color: #18181b;
-    line-height: 1.7;
-}
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont,
+                     "Pretendard", "Noto Sans KR",
+                     "Segoe UI", sans-serif;
+        background: #ffffff;
+        color: #18181b;
+        line-height: 1.75;
+    }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 24px 100px;
-}
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+    }
 
-.back {
-    display: inline-block;
-    margin-bottom: 55px;
-    color: #666;
-    text-decoration: none;
-    font-size: 14px;
-}
+    a {
+        text-decoration: none;
+    }
 
-.back:hover {
-    color: #111;
-}
+    .back {
+        display: inline-block;
+        margin-bottom: 55px;
+        color: #666666;
+        font-size: 14px;
+    }
 
-.number {
-    color: #2563eb;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+    .back:hover {
+        color: #111111;
+    }
 
-h1 {
-    margin: 10px 0 18px;
-    font-size: 42px;
-    line-height: 1.2;
-    letter-spacing: -1.5px;
-}
+    .project-number {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
 
-.summary {
-    max-width: 720px;
-    color: #666;
-    font-size: 18px;
-}
+    h1 {
+        margin: 10px 0 18px;
+        font-size: 42px;
+        line-height: 1.2;
+        letter-spacing: -1.5px;
+    }
 
-section {
-    padding: 38px 0;
-    border-top: 1px solid #eeeeee;
-}
+    .summary {
+        max-width: 760px;
+        color: #666666;
+        font-size: 18px;
+        margin-bottom: 55px;
+    }
 
-.first {
-    margin-top: 55px;
-}
+    section {
+        padding: 38px 0;
+        border-top: 1px solid #eeeeee;
+    }
 
-h2 {
-    margin: 0 0 15px;
-    font-size: 22px;
-}
+    h2 {
+        font-size: 23px;
+        margin: 0 0 17px;
+        letter-spacing: -0.5px;
+    }
 
-p {
-    color: #555;
-}
+    h3 {
+        font-size: 17px;
+        margin-top: 25px;
+    }
 
-.tag {
-    display: inline-block;
-    margin: 5px 5px 0 0;
-    padding: 7px 11px;
-    background: #f6f6f6;
-    border: 1px solid #e5e5e5;
-    border-radius: 6px;
-    font-size: 13px;
-    color: #444;
-}
+    p {
+        color: #555555;
+    }
 
-.notice {
-    padding: 18px 20px;
-    background: #f8fafc;
-    border: 1px solid #e7e7e7;
-    border-radius: 8px;
-    color: #666;
-}
+    .info-box {
+        background: #f8fafc;
+        border: 1px solid #e7e7e7;
+        border-radius: 10px;
+        padding: 22px;
+        color: #4b5563;
+        margin-top: 15px;
+    }
+
+    .workflow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .workflow-item {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px 12px;
+        text-align: center;
+        font-size: 13px;
+        background: #ffffff;
+    }
+
+    .point {
+        border-left: 3px solid #2563eb;
+        padding-left: 17px;
+        margin-top: 24px;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .tag {
+        background: #f5f5f5;
+        border: 1px solid #e2e2e2;
+        border-radius: 6px;
+        padding: 7px 11px;
+        color: #444444;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .github-link {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        background: #18181b;
+        color: #ffffff;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .github-link:hover {
+        background: #333333;
+    }
+
+    @media (max-width: 700px) {
+        h1 {
+            font-size: 34px;
+        }
+
+        .workflow {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
 </style>
 </head>
 
@@ -104,52 +166,239 @@ p {
         ← 전체 프로젝트
     </a>
 
-    <div class="number">
+    <div class="project-number">
         PROJECT 04
     </div>
 
-    <h1>Thin Film Wafer Map</h1>
+    <h1>
+        Thin Film Wafer Map
+    </h1>
 
     <p class="summary">
-        박막 공정 데이터를 웨이퍼 위치 기반으로 시각화하고 특성을 분석한 프로젝트입니다.
+        박막 공정에서 웨이퍼 위치별 측정 데이터를 시각화하여
+        중심부와 가장자리의 공정 편차 및 공간적 균일도를
+        분석한 프로젝트입니다.
     </p>
 
-    <section class="first">
+
+    <!-- 분석 목적 -->
+
+    <section>
+
         <h2>Analysis Objective</h2>
+
         <p>
-            반도체 공정 데이터를 Python으로 분석하고,
-            공정 특성과 품질 및 수율에 영향을 주는 요인을
-            데이터 기반으로 확인하는 것을 목적으로 합니다.
+            증착 공정에서는 평균 두께만 확인하는 것보다
+            웨이퍼 전체에서 두께가 얼마나 균일하게 형성되는지를
+            함께 확인하는 것이 중요합니다.
         </p>
+
+        <div class="info-box">
+            <strong>핵심 분석 목표</strong><br><br>
+
+            Wafer X/Y 좌표별 박막 측정값을 시각화하여
+            Center-to-Edge 편차와 공간적인 두께 분포를 확인하고,
+            공정 Uniformity 상태를 분석합니다.
+        </div>
+
     </section>
 
-    <section>
-        <h2>Tools</h2>
 
-        <span class="tag">Python</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">Jupyter Notebook</span>
+    <!-- 분석 과정 -->
+
+    <section>
+
+        <h2>Analysis Workflow</h2>
+
+        <div class="workflow">
+
+            <div class="workflow-item">
+                01<br>
+                Wafer Coordinate
+            </div>
+
+            <div class="workflow-item">
+                02<br>
+                Thickness Data
+            </div>
+
+            <div class="workflow-item">
+                03<br>
+                Wafer Mapping
+            </div>
+
+            <div class="workflow-item">
+                04<br>
+                Uniformity Analysis
+            </div>
+
+        </div>
+
     </section>
 
+
+    <!-- 결과 -->
+
     <section>
+
         <h2>Analysis Result</h2>
 
-        <div class="notice">
-            이 영역에는 해당 Jupyter Notebook에서 생성한
-            실제 그래프와 분석 결과를 추가할 예정입니다.
+        <div class="point">
+
+            <h3>1. Wafer 좌표 기반 시각화</h3>
+
+            <p>
+                측정값을 단순 표 형태로 확인하는 대신
+                X/Y 좌표를 이용하여 실제 웨이퍼 형태로 배치함으로써
+                위치에 따른 공정 특성을 직관적으로 확인하도록 구성했습니다.
+            </p>
+
         </div>
+
+
+        <div class="point">
+
+            <h3>2. Center-to-Edge 분포 분석</h3>
+
+            <p>
+                웨이퍼 중심으로부터의 거리를 계산하여
+                Center 영역과 Edge 영역의 박막 특성을 비교할 수 있도록 했습니다.
+            </p>
+
+            <p>
+                이를 통해 평균값만으로는 확인하기 어려운
+                방사 방향의 공정 편차를 공간적으로 확인할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>3. Thin Film Uniformity 확인</h3>
+
+            <p>
+                Wafer Map의 색상 및 위치별 측정값을 이용해
+                박막 두께가 특정 영역에 집중되거나
+                Edge 방향으로 변화하는지를 확인하도록 분석했습니다.
+            </p>
+
+        </div>
+
     </section>
 
+
+    <!-- 계산 -->
+
     <section>
-        <h2>Engineering Insight</h2>
+
+        <h2>Uniformity Analysis</h2>
 
         <p>
-            분석 결과를 공정 관점에서 해석하고,
-            이상 원인 탐색 및 공정 개선에 활용할 수 있는
-            인사이트를 정리합니다.
+            박막 공정의 균일도는 웨이퍼 전체의 최대·최소 측정값과
+            평균값을 이용해 정량적으로 평가할 수 있습니다.
         </p>
+
+        <div class="info-box">
+            <strong>Uniformity 평가 개념</strong><br><br>
+
+            Max Thickness − Min Thickness<br>
+            ───────────────────────── × 100<br>
+            2 × Average Thickness
+            <br><br>
+
+            Uniformity 지표와 Wafer Map을 함께 사용하면
+            수치와 공간 패턴을 동시에 확인할 수 있습니다.
+        </div>
+
+    </section>
+
+
+    <!-- Engineering Insight -->
+
+    <section>
+
+        <h2>Engineering Insight</h2>
+
+        <div class="point">
+
+            <h3>Edge 영역 편차</h3>
+
+            <p>
+                웨이퍼 가장자리에서 두께 편차가 반복적으로 발생한다면
+                Edge Effect 또는 공정 가스 분포와 같은
+                위치 의존적 원인을 검토할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Center 영역 편차</h3>
+
+            <p>
+                중심부에 측정값이 집중되는 패턴이 나타난다면
+                가스 유동, 온도 분포 또는 장비 내부의
+                공간적 공정 조건을 추가적으로 확인할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Wafer Map 활용</h3>
+
+            <p>
+                평균 두께와 표준편차만 확인하는 것보다
+                Wafer Map을 함께 사용하면 공정 이상이 발생한
+                위치와 방향성을 빠르게 파악할 수 있습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- 기술 -->
+
+    <section>
+
+        <h2>Tools & Technologies</h2>
+
+        <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Wafer Map</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Jupyter Notebook</span>
+        </div>
+
+    </section>
+
+
+    <!-- Github -->
+
+    <section>
+
+        <h2>Source Notebook</h2>
+
+        <p>
+            Wafer 좌표 계산 및 Thin Film 분석 코드는
+            GitHub Jupyter Notebook에서 확인할 수 있습니다.
+        </p>
+
+        <a
+            class="github-link"
+            href="https://github.com/ahnminah0606-cmd/semiconductor-yield-prediction/blob/main/04.thin_film_wafer_map.ipynb"
+            target="_blank"
+        >
+            View Notebook on GitHub →
+        </a>
+
     </section>
 
 </div>

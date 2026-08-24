@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>14. Interactive Wafer Heatmap</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont,
+                     "Pretendard", "Noto Sans KR",
+                     "Segoe UI", sans-serif;
+        background: #ffffff;
+        color: #18181b;
+        line-height: 1.75;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .back {
+        display: inline-block;
+        margin-bottom: 55px;
+        color: #666666;
+        font-size: 14px;
+    }
+
+    .back:hover {
+        color: #111111;
+    }
+
+    .project-number {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    h1 {
+        margin: 10px 0 18px;
+        font-size: 42px;
+        line-height: 1.2;
+        letter-spacing: -1.5px;
+    }
+
+    .summary {
+        max-width: 760px;
+        color: #666666;
+        font-size: 18px;
+        margin-bottom: 55px;
+    }
+
+    section {
+        padding: 38px 0;
+        border-top: 1px solid #eeeeee;
+    }
+
+    h2 {
+        font-size: 23px;
+        margin: 0 0 17px;
+        letter-spacing: -0.5px;
+    }
+
+    h3 {
+        font-size: 17px;
+        margin-top: 25px;
+    }
+
+    p {
+        color: #555555;
+    }
+
+    .info-box {
+        background: #f8fafc;
+        border: 1px solid #e7e7e7;
+        border-radius: 10px;
+        padding: 22px;
+        color: #4b5563;
+        margin-top: 15px;
+    }
+
+    .workflow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .workflow-item {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px 12px;
+        text-align: center;
+        font-size: 13px;
+        background: #ffffff;
+    }
+
+    .point {
+        border-left: 3px solid #2563eb;
+        padding-left: 17px;
+        margin-top: 24px;
+    }
+
+    .demo-box {
+        margin-top: 20px;
+        padding: 28px;
+        border: 1px solid #dedede;
+        border-radius: 12px;
+        background: #ffffff;
+    }
+
+    .demo-button {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 11px 17px;
+        background: #18181b;
+        color: #ffffff;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 650;
+    }
+
+    .demo-button:hover {
+        background: #333333;
+    }
+
+    .github-link {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        border: 1px solid #d8d8d8;
+        color: #333333;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .github-link:hover {
+        background: #f7f7f7;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .tag {
+        background: #f5f5f5;
+        border: 1px solid #e2e2e2;
+        border-radius: 6px;
+        padding: 7px 11px;
+        color: #444444;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+        h1 {
+            font-size: 34px;
+        }
+
+        .workflow {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="../index.html#projects" class="back">
+        ← 전체 프로젝트
+    </a>
+
+    <div class="project-number">
+        PROJECT 14
+    </div>
+
+    <h1>Interactive Wafer Heatmap</h1>
+
+    <p class="summary">
+        Wafer Die의 X/Y 좌표와 수율 점수를 Plotly Heatmap으로
+        시각화하여 불량의 공간적 분포를 브라우저에서 직접
+        탐색할 수 있도록 구현한 인터랙티브 분석 프로젝트입니다.
+    </p>
+
+
+    <section>
+
+        <h2>Analysis Objective</h2>
+
+        <p>
+            Wafer의 평균 Yield만으로는 불량이 실제로 어느 위치에
+            집중되어 있는지 파악하기 어렵습니다.
+        </p>
+
+        <div class="info-box">
+            <strong>핵심 목표</strong><br><br>
+
+            각 Die의 X/Y 좌표에 Yield Score를 매핑하여
+            Wafer 형태의 Heatmap을 생성하고,
+            Hover 기능을 통해 개별 Die의 위치, 수율 점수,
+            PASS/FAIL 상태를 직접 확인할 수 있도록 구현합니다.
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Analysis Workflow</h2>
+
+        <div class="workflow">
+
+            <div class="workflow-item">
+                01<br>
+                Die Coordinate
+            </div>
+
+            <div class="workflow-item">
+                02<br>
+                Yield Score
+            </div>
+
+            <div class="workflow-item">
+                03<br>
+                Heatmap
+            </div>
+
+            <div class="workflow-item">
+                04<br>
+                Interactive HTML
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Heatmap Design</h2>
+
+        <div class="point">
+
+            <h3>Wafer Coordinate Grid</h3>
+
+            <p>
+                X/Y 좌표를 기준으로 2차원 Grid를 생성하고
+                Wafer Radius 내부의 Die에만 수율 값을 할당했습니다.
+                Wafer 외부 영역은 NaN으로 처리하여 실제 Wafer 형태가
+                나타나도록 구성했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Yield Score</h3>
+
+            <p>
+                각 Die에는 0~100 범위의 Yield Score를 부여하고
+                값이 낮을수록 불량 위험이 높은 영역,
+                값이 높을수록 정상 영역으로 표현했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Color Scale</h3>
+
+            <p>
+                낮은 Yield Score는 Red 계열,
+                중간 영역은 Yellow,
+                높은 Yield Score는 Green 계열로 표시하여
+                이상 영역을 빠르게 구분할 수 있도록 구성했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>PASS / FAIL</h3>
+
+            <p>
+                Yield Score 70을 기준으로 PASS와 FAIL 상태를 구분하고,
+                Hover 시 해당 Die의 판정 결과를 함께 확인할 수 있도록 했습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Defect Pattern Simulation</h2>
+
+        <div class="info-box">
+            <strong>Ring Pattern</strong><br>
+            Wafer Edge 영역의 Yield Score를 낮게 설정하여
+            가장자리 불량 패턴을 구현했습니다.
+            <br><br>
+
+            <strong>Center Pattern</strong><br>
+            Wafer 중심 영역의 Yield Score를 낮게 설정하여
+            중심부 집중 불량을 구현했습니다.
+            <br><br>
+
+            <strong>Random Pattern</strong><br>
+            전체 Wafer에서 일부 Die에 임의의 낮은 값을 부여하여
+            불규칙한 불량 분포를 구현했습니다.
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Interactive Analysis</h2>
+
+        <div class="point">
+
+            <h3>Die-level Hover</h3>
+
+            <p>
+                Heatmap의 각 셀에 마우스를 올리면
+                Die X 좌표, Y 좌표, Yield Score,
+                PASS/FAIL 상태를 확인할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Multi-Wafer Comparison</h3>
+
+            <p>
+                여러 Wafer를 Subplot 형태로 배치하여
+                Lot과 Wafer별 불량 패턴을 한 화면에서
+                비교할 수 있도록 구성했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Browser-based Exploration</h3>
+
+            <p>
+                결과를 Plotly HTML 파일로 저장하여
+                별도의 Python 실행 환경 없이도 브라우저에서
+                인터랙티브 분석 결과를 확인할 수 있습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Interactive Demo</h2>
+
+        <div class="demo-box">
+
+            <h3 style="margin-top:0;">
+                Wafer Die Yield Heatmap
+            </h3>
+
+            <p>
+                아래 버튼을 누르면 실제 인터랙티브 Wafer Heatmap으로
+                이동합니다. 각 Die 위에 마우스를 올려
+                좌표와 Yield Score를 직접 확인할 수 있습니다.
+            </p>
+
+            <a
+                class="demo-button"
+                href="../wafer_heatmap.html"
+            >
+                Open Interactive Wafer Heatmap →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Engineering Insight</h2>
+
+        <div class="point">
+
+            <h3>Edge 불량 탐지</h3>
+
+            <p>
+                Wafer Edge에서 반복적으로 낮은 Yield Score가 나타나는 경우
+                위치 의존적인 공정 편차가 존재하는지
+                우선적으로 확인할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Center 불량 탐지</h3>
+
+            <p>
+                중심부에 낮은 Yield가 집중되는 경우
+                공정 조건의 중심부 편차나 공간적 균일도 문제를
+                원인 후보로 검토할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Lot / Wafer 비교</h3>
+
+            <p>
+                여러 Wafer의 Heatmap을 동시에 비교하면
+                동일 패턴이 반복되는지 확인할 수 있어
+                Lot 단위 이상 분석에 활용할 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>공정 데이터 연계</h3>
+
+            <p>
+                실제 제조 환경에서는 Wafer Map을
+                Tool, Chamber, Recipe 및 공정 이력과 함께 분석하여
+                반복되는 공간적 불량 패턴의 원인 후보를
+                좁혀가는 방식으로 확장할 수 있습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Tools & Technologies</h2>
+
+        <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Plotly</span>
+            <span class="tag">go.Heatmap</span>
+            <span class="tag">Subplots</span>
+            <span class="tag">Wafer Map</span>
+            <span class="tag">Yield Analysis</span>
+            <span class="tag">Interactive Visualization</span>
+            <span class="tag">GitHub Pages</span>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Source & Demo</h2>
+
+        <p>
+            분석 Notebook과 실제 인터랙티브 Wafer Heatmap을
+            각각 확인할 수 있습니다.
+        </p>
+
+        <a
+            class="github-link"
+            href="https://github.com/ahnminah0606-cmd/semiconductor-yield-prediction/blob/main/14.plotly_wafer_heatmap.ipynb"
+            target="_blank"
+        >
+            View Notebook on GitHub →
+        </a>
+
+        &nbsp;
+
+        <a
+            class="demo-button"
+            href="../wafer_heatmap.html"
+        >
+            Open Live Demo →
+        </a>
+
+    </section>
+
+</div>
+
+</body>
+</html>

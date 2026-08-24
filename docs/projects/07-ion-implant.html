@@ -3,96 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>07. Ion Implant & Anneal</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard",
-                 "Noto Sans KR", "Segoe UI", sans-serif;
-    background: #ffffff;
-    color: #18181b;
-    line-height: 1.7;
-}
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont,
+                     "Pretendard", "Noto Sans KR",
+                     "Segoe UI", sans-serif;
+        background: #ffffff;
+        color: #18181b;
+        line-height: 1.75;
+    }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 24px 100px;
-}
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+    }
 
-.back {
-    display: inline-block;
-    margin-bottom: 55px;
-    color: #666;
-    text-decoration: none;
-    font-size: 14px;
-}
+    a {
+        text-decoration: none;
+    }
 
-.back:hover {
-    color: #111;
-}
+    .back {
+        display: inline-block;
+        margin-bottom: 55px;
+        color: #666666;
+        font-size: 14px;
+    }
 
-.number {
-    color: #2563eb;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+    .back:hover {
+        color: #111111;
+    }
 
-h1 {
-    margin: 10px 0 18px;
-    font-size: 42px;
-    line-height: 1.2;
-    letter-spacing: -1.5px;
-}
+    .project-number {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
 
-.summary {
-    max-width: 720px;
-    color: #666;
-    font-size: 18px;
-}
+    h1 {
+        margin: 10px 0 18px;
+        font-size: 42px;
+        line-height: 1.2;
+        letter-spacing: -1.5px;
+    }
 
-section {
-    padding: 38px 0;
-    border-top: 1px solid #eeeeee;
-}
+    .summary {
+        max-width: 760px;
+        color: #666666;
+        font-size: 18px;
+        margin-bottom: 55px;
+    }
 
-.first {
-    margin-top: 55px;
-}
+    section {
+        padding: 38px 0;
+        border-top: 1px solid #eeeeee;
+    }
 
-h2 {
-    margin: 0 0 15px;
-    font-size: 22px;
-}
+    h2 {
+        font-size: 23px;
+        margin: 0 0 17px;
+        letter-spacing: -0.5px;
+    }
 
-p {
-    color: #555;
-}
+    h3 {
+        font-size: 17px;
+        margin-top: 25px;
+    }
 
-.tag {
-    display: inline-block;
-    margin: 5px 5px 0 0;
-    padding: 7px 11px;
-    background: #f6f6f6;
-    border: 1px solid #e5e5e5;
-    border-radius: 6px;
-    font-size: 13px;
-    color: #444;
-}
+    p {
+        color: #555555;
+    }
 
-.notice {
-    padding: 18px 20px;
-    background: #f8fafc;
-    border: 1px solid #e7e7e7;
-    border-radius: 8px;
-    color: #666;
-}
+    .info-box {
+        background: #f8fafc;
+        border: 1px solid #e7e7e7;
+        border-radius: 10px;
+        padding: 22px;
+        color: #4b5563;
+        margin-top: 15px;
+    }
+
+    .workflow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .workflow-item {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px 12px;
+        text-align: center;
+        font-size: 13px;
+        background: #ffffff;
+    }
+
+    .point {
+        border-left: 3px solid #2563eb;
+        padding-left: 17px;
+        margin-top: 24px;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .tag {
+        background: #f5f5f5;
+        border: 1px solid #e2e2e2;
+        border-radius: 6px;
+        padding: 7px 11px;
+        color: #444444;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .github-link {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        background: #18181b;
+        color: #ffffff;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .github-link:hover {
+        background: #333333;
+    }
+
+    @media (max-width: 700px) {
+        h1 {
+            font-size: 34px;
+        }
+
+        .workflow {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
 </style>
 </head>
 
@@ -104,52 +166,225 @@ p {
         ← 전체 프로젝트
     </a>
 
-    <div class="number">
+    <div class="project-number">
         PROJECT 07
     </div>
 
-    <h1>Ion Implant & Anneal</h1>
+    <h1>
+        Ion Implant & Anneal
+    </h1>
 
     <p class="summary">
-        이온주입 및 열처리 공정 파라미터를 분석한 프로젝트입니다.
+        이온주입 Dose·Energy와 어닐링 Temperature·Time이
+        Sheet Resistance에 어떤 영향을 주는지
+        선형회귀를 통해 분석한 프로젝트입니다.
     </p>
 
-    <section class="first">
+
+    <section>
+
         <h2>Analysis Objective</h2>
+
         <p>
-            반도체 공정 데이터를 Python으로 분석하고,
-            공정 특성과 품질 및 수율에 영향을 주는 요인을
-            데이터 기반으로 확인하는 것을 목적으로 합니다.
+            이온주입 공정에서는 Dopant Dose와 Energy가
+            도핑 농도와 깊이에 영향을 주고,
+            이후 Anneal 공정은 도펀트 활성화 및 격자 손상 회복에 영향을 줍니다.
         </p>
+
+        <div class="info-box">
+            <strong>핵심 분석 목표</strong><br><br>
+
+            Dose, Energy, Anneal Temperature, Anneal Time을
+            입력 변수로 사용하여 Sheet Resistance 변화 방향을 분석하고,
+            각 공정 변수의 상대적인 영향 관계를 확인합니다.
+        </div>
+
     </section>
 
-    <section>
-        <h2>Tools</h2>
 
-        <span class="tag">Python</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">Jupyter Notebook</span>
+    <section>
+
+        <h2>Analysis Workflow</h2>
+
+        <div class="workflow">
+
+            <div class="workflow-item">
+                01<br>
+                Implant Data
+            </div>
+
+            <div class="workflow-item">
+                02<br>
+                Dose Log Transform
+            </div>
+
+            <div class="workflow-item">
+                03<br>
+                Linear Regression
+            </div>
+
+            <div class="workflow-item">
+                04<br>
+                Coefficient Analysis
+            </div>
+
+        </div>
+
     </section>
 
+
     <section>
+
         <h2>Analysis Result</h2>
 
-        <div class="notice">
-            이 영역에는 해당 Jupyter Notebook에서 생성한
-            실제 그래프와 분석 결과를 추가할 예정입니다.
+        <div class="point">
+
+            <h3>1. Dose 로그 변환</h3>
+
+            <p>
+                Dose 값은 10¹³~10¹⁵ 수준의 큰 범위를 가지므로
+                log10 변환을 적용하여 분석하기 쉬운 형태로 변환했습니다.
+            </p>
+
         </div>
+
+
+        <div class="point">
+
+            <h3>2. 선형회귀 모델 구축</h3>
+
+            <p>
+                DOSE_LOG, ENERGY_KEV, ANNEAL_TEMP, ANNEAL_TIME을
+                Feature로 설정하고 Sheet Resistance를 Target으로 하여
+                Linear Regression 모델을 학습했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>3. 회귀계수 방향 해석</h3>
+
+            <p>
+                각 변수의 회귀계수 부호를 이용하여
+                공정 조건이 증가할 때 Sheet Resistance가
+                증가하는지 감소하는지 방향성을 확인했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>4. 예측값과 실제값 비교</h3>
+
+            <p>
+                학습된 회귀모델의 예측값과 실제 Sheet Resistance를 비교하고,
+                R²와 평균 절대 오차를 이용해 모델 설명력을 확인하도록 구성했습니다.
+            </p>
+
+        </div>
+
     </section>
 
+
     <section>
+
+        <h2>Process Relationship</h2>
+
+        <div class="info-box">
+            <strong>학습용 데이터에서 설정한 관계</strong><br><br>
+
+            Dose 증가 → Sheet Resistance 감소 경향<br>
+            Energy 증가 → Sheet Resistance 변화<br>
+            Anneal Temperature 증가 → Sheet Resistance 감소 경향<br>
+            Anneal Time 증가 → Sheet Resistance 감소 경향
+            <br><br>
+
+            ※ 본 프로젝트는 실제 Fab 측정값이 아닌
+            학습용 가상 데이터를 이용한 회귀분석 실습입니다.
+        </div>
+
+    </section>
+
+
+    <section>
+
         <h2>Engineering Insight</h2>
 
+        <div class="point">
+
+            <h3>Dose 관리</h3>
+
+            <p>
+                Dose 편차는 도핑 농도와 전기적 특성 변화로 이어질 수 있으므로
+                Implant 조건과 Sheet Resistance 결과를 함께 관리할 필요가 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Anneal 조건</h3>
+
+            <p>
+                Anneal Temperature와 Time은 Dopant 활성화와 확산에 영향을 줄 수 있어
+                목표 전기 특성을 유지하기 위한 Thermal Process Window 관리가 중요합니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>회귀분석 활용</h3>
+
+            <p>
+                회귀계수를 통해 각 변수의 영향 방향을 빠르게 확인할 수 있지만,
+                실제 공정에서는 변수 간 상호작용과 비선형 관계도 함께 고려해야 합니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Tools & Technologies</h2>
+
+        <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">Linear Regression</span>
+            <span class="tag">Feature Analysis</span>
+            <span class="tag">Jupyter Notebook</span>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Source Notebook</h2>
+
         <p>
-            분석 결과를 공정 관점에서 해석하고,
-            이상 원인 탐색 및 공정 개선에 활용할 수 있는
-            인사이트를 정리합니다.
+            이온주입 및 Anneal 조건과 Sheet Resistance 분석 코드는
+            GitHub Jupyter Notebook에서 확인할 수 있습니다.
         </p>
+
+        <a
+            class="github-link"
+            href="https://github.com/ahnminah0606-cmd/semiconductor-yield-prediction/blob/main/07.ion_implant_anneal_analysis.ipynb"
+            target="_blank"
+        >
+            View Notebook on GitHub →
+        </a>
+
     </section>
 
 </div>

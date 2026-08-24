@@ -3,96 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>08. Diffusion & Oxidation</title>
+
+<title>08. Diffusion & Oxidation Analysis</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard",
-                 "Noto Sans KR", "Segoe UI", sans-serif;
-    background: #ffffff;
-    color: #18181b;
-    line-height: 1.7;
-}
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont,
+                     "Pretendard", "Noto Sans KR",
+                     "Segoe UI", sans-serif;
+        background: #ffffff;
+        color: #18181b;
+        line-height: 1.75;
+    }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 24px 100px;
-}
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+    }
 
-.back {
-    display: inline-block;
-    margin-bottom: 55px;
-    color: #666;
-    text-decoration: none;
-    font-size: 14px;
-}
+    a {
+        text-decoration: none;
+    }
 
-.back:hover {
-    color: #111;
-}
+    .back {
+        display: inline-block;
+        margin-bottom: 55px;
+        color: #666666;
+        font-size: 14px;
+    }
 
-.number {
-    color: #2563eb;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+    .back:hover {
+        color: #111111;
+    }
 
-h1 {
-    margin: 10px 0 18px;
-    font-size: 42px;
-    line-height: 1.2;
-    letter-spacing: -1.5px;
-}
+    .project-number {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
 
-.summary {
-    max-width: 720px;
-    color: #666;
-    font-size: 18px;
-}
+    h1 {
+        margin: 10px 0 18px;
+        font-size: 42px;
+        line-height: 1.2;
+        letter-spacing: -1.5px;
+    }
 
-section {
-    padding: 38px 0;
-    border-top: 1px solid #eeeeee;
-}
+    .summary {
+        max-width: 760px;
+        color: #666666;
+        font-size: 18px;
+        margin-bottom: 55px;
+    }
 
-.first {
-    margin-top: 55px;
-}
+    section {
+        padding: 38px 0;
+        border-top: 1px solid #eeeeee;
+    }
 
-h2 {
-    margin: 0 0 15px;
-    font-size: 22px;
-}
+    h2 {
+        font-size: 23px;
+        margin: 0 0 17px;
+        letter-spacing: -0.5px;
+    }
 
-p {
-    color: #555;
-}
+    h3 {
+        font-size: 17px;
+        margin-top: 25px;
+    }
 
-.tag {
-    display: inline-block;
-    margin: 5px 5px 0 0;
-    padding: 7px 11px;
-    background: #f6f6f6;
-    border: 1px solid #e5e5e5;
-    border-radius: 6px;
-    font-size: 13px;
-    color: #444;
-}
+    p {
+        color: #555555;
+    }
 
-.notice {
-    padding: 18px 20px;
-    background: #f8fafc;
-    border: 1px solid #e7e7e7;
-    border-radius: 8px;
-    color: #666;
-}
+    .info-box {
+        background: #f8fafc;
+        border: 1px solid #e7e7e7;
+        border-radius: 10px;
+        padding: 22px;
+        color: #4b5563;
+        margin-top: 15px;
+    }
+
+    .workflow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .workflow-item {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px 12px;
+        text-align: center;
+        font-size: 13px;
+        background: #ffffff;
+    }
+
+    .point {
+        border-left: 3px solid #2563eb;
+        padding-left: 17px;
+        margin-top: 24px;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .tag {
+        background: #f5f5f5;
+        border: 1px solid #e2e2e2;
+        border-radius: 6px;
+        padding: 7px 11px;
+        color: #444444;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .github-link {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        background: #18181b;
+        color: #ffffff;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .github-link:hover {
+        background: #333333;
+    }
+
+    @media (max-width: 700px) {
+        h1 {
+            font-size: 34px;
+        }
+
+        .workflow {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
 </style>
 </head>
 
@@ -104,52 +166,225 @@ p {
         ← 전체 프로젝트
     </a>
 
-    <div class="number">
+    <div class="project-number">
         PROJECT 08
     </div>
 
-    <h1>Diffusion & Oxidation</h1>
+    <h1>Diffusion & Oxidation Analysis</h1>
 
     <p class="summary">
-        확산 및 산화 공정의 주요 변수와 공정 결과를 분석한 프로젝트입니다.
+        확산 및 산화 공정에서 온도와 공정 시간이
+        산화막 성장과 공정 결과에 미치는 영향을 분석하고,
+        Thermal Process의 주요 특성을 시각화한 프로젝트입니다.
     </p>
 
-    <section class="first">
+
+    <section>
+
         <h2>Analysis Objective</h2>
+
         <p>
-            반도체 공정 데이터를 Python으로 분석하고,
-            공정 특성과 품질 및 수율에 영향을 주는 요인을
-            데이터 기반으로 확인하는 것을 목적으로 합니다.
+            반도체 열공정에서는 온도와 시간이 확산 및 산화 반응에
+            직접적인 영향을 주기 때문에 안정적인 Thermal Budget 관리가 중요합니다.
         </p>
+
+        <div class="info-box">
+            <strong>핵심 분석 목표</strong><br><br>
+
+            Temperature와 Process Time 변화에 따른
+            Oxide Thickness 및 공정 결과의 변화를 분석하고,
+            열공정 조건과 결과값 사이의 관계를 데이터로 확인합니다.
+        </div>
+
     </section>
 
-    <section>
-        <h2>Tools</h2>
 
-        <span class="tag">Python</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">Jupyter Notebook</span>
+    <section>
+
+        <h2>Analysis Workflow</h2>
+
+        <div class="workflow">
+
+            <div class="workflow-item">
+                01<br>
+                Process Data
+            </div>
+
+            <div class="workflow-item">
+                02<br>
+                Temperature
+            </div>
+
+            <div class="workflow-item">
+                03<br>
+                Oxide Growth
+            </div>
+
+            <div class="workflow-item">
+                04<br>
+                Trend Analysis
+            </div>
+
+        </div>
+
     </section>
 
+
     <section>
+
         <h2>Analysis Result</h2>
 
-        <div class="notice">
-            이 영역에는 해당 Jupyter Notebook에서 생성한
-            실제 그래프와 분석 결과를 추가할 예정입니다.
+        <div class="point">
+
+            <h3>1. Temperature 영향 분석</h3>
+
+            <p>
+                공정 온도와 산화막 두께 데이터를 비교하여
+                온도 변화에 따른 Oxide Growth 특성을
+                확인할 수 있도록 분석했습니다.
+            </p>
+
         </div>
+
+
+        <div class="point">
+
+            <h3>2. Process Time 영향 분석</h3>
+
+            <p>
+                동일하거나 유사한 온도 조건에서 공정 시간이 증가할 때
+                산화막 성장 결과가 어떻게 변화하는지 비교하도록 구성했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>3. Thermal Process 변수 관계 확인</h3>
+
+            <p>
+                Temperature, Process Time, Oxide Thickness 등의
+                주요 변수를 함께 비교하여 공정 조건과 결과값 사이의
+                관계를 시각적으로 확인했습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>4. 공정 조건별 분포 비교</h3>
+
+            <p>
+                평균값뿐 아니라 조건별 결과 분포와 산포를 함께 확인하여
+                특정 Thermal 조건에서 공정 변동성이 증가하는지
+                살펴볼 수 있도록 했습니다.
+            </p>
+
+        </div>
+
     </section>
 
+
     <section>
+
+        <h2>Process Interpretation</h2>
+
+        <div class="info-box">
+            <strong>Thermal Process의 핵심</strong><br><br>
+
+            Temperature ↑ → 반응 속도 증가 가능<br>
+            Process Time ↑ → 산화막 성장량 증가 가능<br><br>
+
+            하지만 실제 공정에서는 온도와 시간이 독립적으로 작용하지 않기 때문에
+            두 조건을 함께 고려한 Thermal Budget 관리가 필요합니다.
+        </div>
+
+    </section>
+
+
+    <section>
+
         <h2>Engineering Insight</h2>
 
+        <div class="point">
+
+            <h3>Temperature Control</h3>
+
+            <p>
+                열공정은 온도 변화에 민감하기 때문에
+                Furnace 내부의 온도 균일도와 Recipe 안정성이
+                공정 결과의 균일성을 결정하는 중요한 요소가 될 수 있습니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>Thermal Budget</h3>
+
+            <p>
+                높은 온도 또는 긴 공정 시간은 원하는 반응을 촉진할 수 있지만,
+                과도한 Thermal Budget은 불필요한 확산이나
+                목표 특성 변화로 이어질 수 있으므로 관리가 필요합니다.
+            </p>
+
+        </div>
+
+
+        <div class="point">
+
+            <h3>공정 모니터링</h3>
+
+            <p>
+                Oxide Thickness의 장기적인 Drift가 발생한다면
+                Recipe뿐 아니라 Furnace Zone별 온도,
+                공정 시간 및 장비 상태를 함께 확인하는 방식으로
+                원인 후보를 좁힐 수 있습니다.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Tools & Technologies</h2>
+
+        <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Diffusion</span>
+            <span class="tag">Oxidation</span>
+            <span class="tag">Thermal Process</span>
+            <span class="tag">Jupyter Notebook</span>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Source Notebook</h2>
+
         <p>
-            분석 결과를 공정 관점에서 해석하고,
-            이상 원인 탐색 및 공정 개선에 활용할 수 있는
-            인사이트를 정리합니다.
+            Diffusion 및 Oxidation 공정 분석 코드는
+            GitHub Jupyter Notebook에서 확인할 수 있습니다.
         </p>
+
+        <a
+            class="github-link"
+            href="https://github.com/ahnminah0606-cmd/semiconductor-yield-prediction/blob/main/08.diffusion_oxidation_analysis.ipynb"
+            target="_blank"
+        >
+            View Notebook on GitHub →
+        </a>
+
     </section>
 
 </div>
