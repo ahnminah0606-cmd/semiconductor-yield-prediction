@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01. SECOM Yield Prediction</title>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            margin-top: 45px;
+            font-size: 24px;
+        }
+
+        .summary {
+            color: #666;
+            font-size: 17px;
+        }
+
+        .box {
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        img {
+            width: 100%;
+            margin-top: 20px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<a class="back" href="../index.html">← Portfolio</a>
+
+<h1>01. SECOM Yield Prediction</h1>
+
+<p class="summary">
+    SECOM 반도체 제조 데이터를 활용하여 공정 센서 변수와
+    Pass/Fail 간의 관계를 분석하고 수율 예측 모델을 구성한 프로젝트입니다.
+</p>
+
+<h2>Analysis Objective</h2>
+
+<div class="box">
+    공정 센서 데이터를 기반으로 불량 발생 가능성을 예측하고,
+    수율 저하와 관련된 주요 변수와 데이터 특성을 탐색합니다.
+</div>
+
+<h2>Dataset</h2>
+
+<p>
+    UCI SECOM 기반 데이터로 약 1,500개 이상의 공정 샘플과
+    수백 개의 센서 변수를 포함합니다.
+</p>
+
+<h2>Workflow</h2>
+
+<div class="box">
+    Data Load → Missing Value Handling → Feature Analysis →
+    Model Training → Model Evaluation
+</div>
+
+<h2>Key Result</h2>
+
+<p>
+    공정 센서 데이터의 결측치를 처리하고,
+    정상/불량 데이터를 기준으로 예측 모델을 학습했습니다.
+</p>
+
+<h2>Engineering Insight</h2>
+
+<p>
+    실제 제조 환경에서는 단순 예측 정확도뿐 아니라
+    불량 샘플 탐지율, 클래스 불균형, 주요 센서의 공정 의미를 함께 확인해야 합니다.
+</p>
+
+</body>
+</html>
