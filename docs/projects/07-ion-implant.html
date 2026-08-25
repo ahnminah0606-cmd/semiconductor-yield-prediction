@@ -420,7 +420,9 @@
 </div>
 
 
-<section class="notebook-results" id="notebook-results"><h2>Notebook Execution Result</h2><p>이 노트북은 그래프를 출력하지 않고, 회귀 모델의 실행 결과를 텍스트로 기록했습니다. 수치는 실제 노트북 실행 출력에서 가져왔습니다.</p><div class="notebook-output"><dl><dt>R² score</dt><dd>0.9070</dd><dt>DOSE_LOG 계수</dt><dd>-69.8044</dd><dt>ENERGY_KEV 계수</dt><dd>+1.2824</dd><dt>ANNEAL_TEMP 계수</dt><dd>-0.3628</dd><dt>ANNEAL_TIME 계수</dt><dd>-0.9780</dd></dl></div><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>이 회귀 모델은 Sheet Resistance를 설명하기 위해 Dose, Energy, Anneal 조건을 함께 사용했습니다. 계수의 부호는 현재 데이터와 변수 단위에서의 모델 관계이므로, 실제 레시피 변경 전에는 공정 창과 물리적 인과관계를 별도로 검증해야 합니다.</p></section>
+
+<section class="notebook-results" id="notebook-results"><h2>Notebook Execution Result</h2><p>노트북이 기록한 회귀 계수를 시각화하고, 실제 실행 수치를 함께 표시했습니다.</p><article class="notebook-figure"><h3>Regression Coefficients</h3><img src="../assets/images/07/regression-coefficients.svg" alt="Ion Implant and Anneal regression coefficients"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>이 회귀 모델은 Sheet Resistance를 설명하기 위해 Dose, Energy, Anneal 조건을 함께 사용했습니다. 계수의 부호는 현재 데이터와 변수 단위에서의 모델 관계이므로, 실제 레시피 변경 전에는 공정 창과 물리적 인과관계를 별도로 검증해야 합니다.</p></article><div class="notebook-output"><dl><dt>R² score</dt><dd>0.9070</dd><dt>DOSE_LOG 계수</dt><dd>-69.8044</dd><dt>ENERGY_KEV 계수</dt><dd>+1.2824</dd><dt>ANNEAL_TEMP 계수</dt><dd>-0.3628</dd><dt>ANNEAL_TIME 계수</dt><dd>-0.9780</dd></dl></div></section>
+
 
 </body>
 </html>
