@@ -156,6 +156,25 @@
         }
     }
 </style>
+
+<!-- notebook-results-style -->
+<style>
+.notebook-results { margin-top: 56px; padding: 32px 0 4px; border-top: 1px solid #e7e7e7; }
+.notebook-results h2 { margin-bottom: 10px; }
+.notebook-results > p { margin-bottom: 26px; color: #666; }
+.notebook-figure { margin: 22px 0; padding: 22px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+.notebook-figure h3 { margin: 0 0 12px; font-size: 19px; }
+.notebook-figure img { display: block; width: 100%; max-height: 680px; margin: 14px 0 18px; object-fit: contain; border: 1px solid #eee; border-radius: 8px; }
+.notebook-insight { margin: 0; padding: 16px 18px; border-left: 4px solid #2563eb; border-radius: 0 8px 8px 0; background: #f8fafc; color: #444; }
+.notebook-insight strong { color: #18181b; }
+.notebook-output { padding: 18px; border: 1px solid #e5e7eb; border-radius: 10px; background: #f8fafc; }
+.notebook-output dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 0; }
+.notebook-output dt { font-weight: 700; }
+.notebook-output dd { margin: 0; color: #555; }
+.notebook-frame { width: 100%; height: 650px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; }
+@media (max-width: 600px) { .notebook-figure { padding: 15px; } .notebook-frame { height: 480px; } .notebook-output dl { grid-template-columns: 1fr; gap: 3px; } }
+</style>
+
 </head>
 
 <body>
@@ -400,5 +419,6 @@
 
 </div>
 
+<section class="notebook-results" id="notebook-results"><h2>Notebook Execution Results</h2><p>아래 그래프는 해당 Python 노트북에서 실제 실행되어 저장된 출력입니다.</p><article class="notebook-figure"><h3>Oxide Thickness by Oxidation Type</h3><img src="../assets/images/08/figure-01.png" alt="Oxide Thickness by Oxidation Type"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>산화 방식별 산화막 두께 분포를 비교했습니다. Wet과 Dry 조건은 성장 특성이 다르므로, 목표 두께와 균일도 기준에 맞춰 공정 창을 관리해야 합니다.</p></article><article class="notebook-figure"><h3>Temperature vs Oxide Thickness</h3><img src="../assets/images/08/figure-02.png" alt="Temperature vs Oxide Thickness"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>온도와 산화막 두께의 관계를 확인한 결과입니다. 열 조건 변화가 막 성장에 미치는 영향을 공정 레시피 관점에서 점검할 수 있습니다.</p></article><article class="notebook-figure"><h3>Process Time vs Oxide Thickness</h3><img src="../assets/images/08/figure-03.png" alt="Process Time vs Oxide Thickness"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>공정 시간과 산화막 두께의 관계를 표시했습니다. 시간은 열 공정의 누적 효과를 결정하는 핵심 조절 변수 중 하나입니다.</p></article><article class="notebook-figure"><h3>Thermal Budget vs Junction Depth</h3><img src="../assets/images/08/figure-04.png" alt="Thermal Budget vs Junction Depth"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>Thermal Budget과 접합 깊이의 관계를 확인했습니다. 열 이력은 도펀트 확산에 영향을 주므로, 소자 설계 목표와 함께 관리해야 합니다.</p></article></section>
 </body>
 </html>

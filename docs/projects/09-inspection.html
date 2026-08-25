@@ -156,6 +156,25 @@
         }
     }
 </style>
+
+<!-- notebook-results-style -->
+<style>
+.notebook-results { margin-top: 56px; padding: 32px 0 4px; border-top: 1px solid #e7e7e7; }
+.notebook-results h2 { margin-bottom: 10px; }
+.notebook-results > p { margin-bottom: 26px; color: #666; }
+.notebook-figure { margin: 22px 0; padding: 22px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+.notebook-figure h3 { margin: 0 0 12px; font-size: 19px; }
+.notebook-figure img { display: block; width: 100%; max-height: 680px; margin: 14px 0 18px; object-fit: contain; border: 1px solid #eee; border-radius: 8px; }
+.notebook-insight { margin: 0; padding: 16px 18px; border-left: 4px solid #2563eb; border-radius: 0 8px 8px 0; background: #f8fafc; color: #444; }
+.notebook-insight strong { color: #18181b; }
+.notebook-output { padding: 18px; border: 1px solid #e5e7eb; border-radius: 10px; background: #f8fafc; }
+.notebook-output dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 0; }
+.notebook-output dt { font-weight: 700; }
+.notebook-output dd { margin: 0; color: #555; }
+.notebook-frame { width: 100%; height: 650px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; }
+@media (max-width: 600px) { .notebook-figure { padding: 15px; } .notebook-frame { height: 480px; } .notebook-output dl { grid-template-columns: 1fr; gap: 3px; } }
+</style>
+
 </head>
 
 <body>
@@ -453,5 +472,6 @@
 
 </div>
 
+<section class="notebook-results" id="notebook-results"><h2>Notebook Execution Results</h2><p>아래 그래프는 해당 Python 노트북에서 실제 실행되어 저장된 출력입니다.</p><article class="notebook-figure"><h3>Total Defect Count vs Final Yield</h3><img src="../assets/images/09/figure-01.png" alt="Total Defect Count vs Final Yield"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>총 결함 수와 Final Yield의 관계를 확인했습니다. 검사 데이터는 수율 저하를 조기에 감지하고 후속 원인 분석의 우선순위를 정하는 데 활용할 수 있습니다.</p></article><article class="notebook-figure"><h3>Killer Defect Count vs Final Yield</h3><img src="../assets/images/09/figure-02.png" alt="Killer Defect Count vs Final Yield"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>Killer Defect 수와 Final Yield의 관계를 별도로 표시했습니다. 치명 결함은 단순 총량보다 수율에 더 직접적인 영향을 줄 수 있어 분리 관리가 필요합니다.</p></article><article class="notebook-figure"><h3>Actual vs Predicted Yield</h3><img src="../assets/images/09/figure-03.png" alt="Actual vs Predicted Yield"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>실제 Yield와 예측 Yield를 비교한 결과입니다. 대각선 주변으로의 분포는 예측값이 실제값과 얼마나 일치하는지 확인하는 기준입니다.</p></article><article class="notebook-figure"><h3>Yield Prediction Feature Importance</h3><img src="../assets/images/09/figure-04.png" alt="Yield Prediction Feature Importance"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>수율 예측에 상대적으로 기여한 변수를 확인했습니다. 노트북에 명시된 대로 이 중요도는 인과관계가 아니며, 실제 FAB 적용 전 공정·검사 이력과의 검증이 필요합니다.</p></article></section>
 </body>
 </html>

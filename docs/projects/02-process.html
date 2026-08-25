@@ -156,6 +156,25 @@
         }
     }
 </style>
+
+<!-- notebook-results-style -->
+<style>
+.notebook-results { margin-top: 56px; padding: 32px 0 4px; border-top: 1px solid #e7e7e7; }
+.notebook-results h2 { margin-bottom: 10px; }
+.notebook-results > p { margin-bottom: 26px; color: #666; }
+.notebook-figure { margin: 22px 0; padding: 22px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+.notebook-figure h3 { margin: 0 0 12px; font-size: 19px; }
+.notebook-figure img { display: block; width: 100%; max-height: 680px; margin: 14px 0 18px; object-fit: contain; border: 1px solid #eee; border-radius: 8px; }
+.notebook-insight { margin: 0; padding: 16px 18px; border-left: 4px solid #2563eb; border-radius: 0 8px 8px 0; background: #f8fafc; color: #444; }
+.notebook-insight strong { color: #18181b; }
+.notebook-output { padding: 18px; border: 1px solid #e5e7eb; border-radius: 10px; background: #f8fafc; }
+.notebook-output dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 0; }
+.notebook-output dt { font-weight: 700; }
+.notebook-output dd { margin: 0; color: #555; }
+.notebook-frame { width: 100%; height: 650px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; }
+@media (max-width: 600px) { .notebook-figure { padding: 15px; } .notebook-frame { height: 480px; } .notebook-output dl { grid-template-columns: 1fr; gap: 3px; } }
+</style>
+
 </head>
 
 <body>
@@ -384,5 +403,6 @@
 
 </div>
 
+<section class="notebook-results" id="notebook-results"><h2>Notebook Execution Results</h2><p>아래 그래프는 해당 Python 노트북에서 실제 실행되어 저장된 출력입니다.</p><article class="notebook-figure"><h3>Top 20 Sensors with Highest Missing Ratio</h3><img src="../assets/images/02/figure-01.png" alt="Top 20 Sensors with Highest Missing Ratio"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>결측치 비율이 높은 센서를 먼저 확인한 뒤, 노트북에서는 결측률 40% 초과 센서를 제거했습니다. 계측 가능 상태와 데이터 수집 이력은 공정 분석 전에 점검할 대상입니다.</p></article><article class="notebook-figure"><h3>Sensor Distribution</h3><img src="../assets/images/02/figure-02.png" alt="Sensor Distribution"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>개별 센서의 측정값 분포를 확인한 결과입니다. 분포의 중심과 폭을 함께 보면 공정 조건 변화 또는 계측 이상 가능성을 탐색할 수 있습니다.</p></article><article class="notebook-figure"><h3>Sensor Distribution Comparison</h3><img src="../assets/images/02/figure-03.png" alt="Sensor Distribution Comparison"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>여러 센서의 스케일과 산포를 비교한 결과입니다. 서로 다른 물리량의 신호를 함께 모델링할 때는 변수별 범위 차이를 고려해야 합니다.</p></article><article class="notebook-figure"><h3>Sensor Correlation</h3><img src="../assets/images/02/figure-04.png" alt="Sensor Correlation"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>선택 센서 간 상관관계를 시각화한 결과입니다. 높은 상관은 공통 공정 조건 또는 중복된 신호를 뜻할 수 있어, 변수 해석과 선택의 출발점이 됩니다.</p></article><article class="notebook-figure"><h3>Top 20 Sensors with Highest Outlier Ratio</h3><img src="../assets/images/02/figure-05.png" alt="Top 20 Sensors with Highest Outlier Ratio"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>이상값 비율이 높은 센서를 분리해 확인했습니다. 현업에서는 해당 시점의 장비 상태와 Lot 이력을 함께 대조해 원인을 좁힐 수 있습니다.</p></article><article class="notebook-figure"><h3>Sensor: Pass vs Fail</h3><img src="../assets/images/02/figure-06.png" alt="Sensor: Pass vs Fail"><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>정상과 불량 레이블별 센서 분포를 비교한 결과입니다. 두 집단의 분포 차이는 불량 예측에 활용 가능한 후보 신호를 찾는 단서가 됩니다.</p></article></section>
 </body>
 </html>

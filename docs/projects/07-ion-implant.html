@@ -156,6 +156,25 @@
         }
     }
 </style>
+
+<!-- notebook-results-style -->
+<style>
+.notebook-results { margin-top: 56px; padding: 32px 0 4px; border-top: 1px solid #e7e7e7; }
+.notebook-results h2 { margin-bottom: 10px; }
+.notebook-results > p { margin-bottom: 26px; color: #666; }
+.notebook-figure { margin: 22px 0; padding: 22px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+.notebook-figure h3 { margin: 0 0 12px; font-size: 19px; }
+.notebook-figure img { display: block; width: 100%; max-height: 680px; margin: 14px 0 18px; object-fit: contain; border: 1px solid #eee; border-radius: 8px; }
+.notebook-insight { margin: 0; padding: 16px 18px; border-left: 4px solid #2563eb; border-radius: 0 8px 8px 0; background: #f8fafc; color: #444; }
+.notebook-insight strong { color: #18181b; }
+.notebook-output { padding: 18px; border: 1px solid #e5e7eb; border-radius: 10px; background: #f8fafc; }
+.notebook-output dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 0; }
+.notebook-output dt { font-weight: 700; }
+.notebook-output dd { margin: 0; color: #555; }
+.notebook-frame { width: 100%; height: 650px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; }
+@media (max-width: 600px) { .notebook-figure { padding: 15px; } .notebook-frame { height: 480px; } .notebook-output dl { grid-template-columns: 1fr; gap: 3px; } }
+</style>
+
 </head>
 
 <body>
@@ -399,6 +418,9 @@
     </section>
 
 </div>
+
+
+<section class="notebook-results" id="notebook-results"><h2>Notebook Execution Result</h2><p>이 노트북은 그래프를 출력하지 않고, 회귀 모델의 실행 결과를 텍스트로 기록했습니다. 수치는 실제 노트북 실행 출력에서 가져왔습니다.</p><div class="notebook-output"><dl><dt>R² score</dt><dd>0.9070</dd><dt>DOSE_LOG 계수</dt><dd>-69.8044</dd><dt>ENERGY_KEV 계수</dt><dd>+1.2824</dd><dt>ANNEAL_TEMP 계수</dt><dd>-0.3628</dd><dt>ANNEAL_TIME 계수</dt><dd>-0.9780</dd></dl></div><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>이 회귀 모델은 Sheet Resistance를 설명하기 위해 Dose, Energy, Anneal 조건을 함께 사용했습니다. 계수의 부호는 현재 데이터와 변수 단위에서의 모델 관계이므로, 실제 레시피 변경 전에는 공정 창과 물리적 인과관계를 별도로 검증해야 합니다.</p></section>
 
 </body>
 </html>

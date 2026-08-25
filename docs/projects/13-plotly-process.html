@@ -179,6 +179,25 @@
         }
     }
 </style>
+
+<!-- notebook-results-style -->
+<style>
+.notebook-results { margin-top: 56px; padding: 32px 0 4px; border-top: 1px solid #e7e7e7; }
+.notebook-results h2 { margin-bottom: 10px; }
+.notebook-results > p { margin-bottom: 26px; color: #666; }
+.notebook-figure { margin: 22px 0; padding: 22px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+.notebook-figure h3 { margin: 0 0 12px; font-size: 19px; }
+.notebook-figure img { display: block; width: 100%; max-height: 680px; margin: 14px 0 18px; object-fit: contain; border: 1px solid #eee; border-radius: 8px; }
+.notebook-insight { margin: 0; padding: 16px 18px; border-left: 4px solid #2563eb; border-radius: 0 8px 8px 0; background: #f8fafc; color: #444; }
+.notebook-insight strong { color: #18181b; }
+.notebook-output { padding: 18px; border: 1px solid #e5e7eb; border-radius: 10px; background: #f8fafc; }
+.notebook-output dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 0; }
+.notebook-output dt { font-weight: 700; }
+.notebook-output dd { margin: 0; color: #555; }
+.notebook-frame { width: 100%; height: 650px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; }
+@media (max-width: 600px) { .notebook-figure { padding: 15px; } .notebook-frame { height: 480px; } .notebook-output dl { grid-template-columns: 1fr; gap: 3px; } }
+</style>
+
 </head>
 
 <body>
@@ -464,6 +483,9 @@
     
 
 </div>
+
+
+<section class="notebook-results" id="notebook-results"><h2>Notebook Execution Result</h2><p>노트북에서 생성한 Plotly Scatter Matrix입니다. 축을 선택하거나 점에 마우스를 올려 공정 변수와 PASS/FAIL 분포를 직접 확인할 수 있습니다.</p><div class="notebook-figure"><h3>Interactive Process Scatter Matrix</h3><iframe class="notebook-frame" src="../scatter_matrix.html" title="Interactive process scatter matrix"></iframe><p class="notebook-insight"><strong>결과 해석 · 공정 관점</strong><br>온도, 압력, 가스 유량, 두께의 동시 분포를 비교해 변수 조합별 이상 구간을 탐색할 수 있습니다. 한 변수만의 한계값보다 공정 조건 조합을 함께 보는 것이 수율 변동 원인을 찾는 데 유리합니다.</p></div></section>
 
 </body>
 </html>
