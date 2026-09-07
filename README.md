@@ -1,41 +1,40 @@
-# 반도체 공정 내 극단적 데이터 불균형(Class Imbalance) 해결 및 양산기술 DMI 관점의 센서 차원 축소 수율 예측 프로젝트
+# SECOM 공정 센서 이상 예측
 
-## 1. Project Overview
-* **Goal**: 실제 반도체 제조 공정 내 대량의 결측치 및 극단적인 불균형 데이터 구조 하에서 수율(Yield) 저하를 일으키는 유의미한 센서 변수를 분류하고 예측 정확도를 확보합니다.
-  
----
+반도체 제조 공정의 SECOM 센서 데이터를 전처리하고, 클래스 불균형 환경에서 XGBoost의 불량 탐지 성능을 검증한 프로젝트입니다.
 
-## 2. Technical Stack
-<p>
-  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=Python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=Pandas&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Spotfire-28A745?style=flat-square&logo=analytics&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white"/>
-</p>
+## 데이터와 분석 절차
 
----
+- 전체 데이터: 1,567개 샘플, 590개 센서 변수
+- 클래스 분포: 정상 1,463건, 불량 104건
+- 전처리: 결측률 40% 초과 변수 제거, 중앙값 보정, VarianceThreshold(0.05), SMOTE, 표준화
+- 사용 변수: VarianceThreshold 적용 후 267개
+- 모델: Recall 기준 GridSearchCV + XGBoost
+- 테스트셋: 314건(정상 293건, 불량 21건)
 
-## 3. Key Results & Impact (성능 비교 시각화)
+## 현재 재현 결과
 
-| 실험 차수 | 적용 알고리즘 | 전처리 및 샘플링 기법 | Recall (불량 검출률) | F1-Score | 비고 |
-| :---: | :--- | :--- | :---: | :---: | :--- |
-| **01** | XGBoost (Baseline) | 결측치 중앙값 대체 | 0.12 | 0.21 | 극단적 불균형으로 불량 검출 실패 |
-| **02** | XGBoost + SMOTE | SMOTE 오버샘플링 적용 | 0.68 | 0.52 | 불량 검출력은 개선되었으나 정밀도 하락 |
-| **03** | LightGBM + SMOTE | Variance Threshold 0.05 + SMOTE | **0.82** | **0.65** | 최종 챔버 불량 역추적 최적 모델 채택 |
+| 지표 | 결과 |
+| --- | ---: |
+| Accuracy | 0.92 |
+| 불량 Precision | 0.00 |
+| 불량 Recall | 0.00 |
+| 불량 F1-score | 0.00 |
+| TN | 288 |
+| FP(오경보) | 5 |
+| FN(미탐) | 21 |
+| TP | 0 |
 
----
+전체 정확도는 높지만 실제 불량 21건을 모두 정상으로 분류했습니다. 따라서 현재 모델은 불량 선별에 사용할 수 없으며, 정확도만으로 불균형 데이터의 성능을 판단하면 안 된다는 한계를 보여줍니다.
 
-## 4. Key Troubleshooting Steps
-1. **Handling Class Imbalance**
-   * *Problem*: 불량률 6% 미만의 극단적인 데이터 구조로 인해 모델이 정상 데이터만 편향 학습하는 현상 발생.
-   * *Solution*: SMOTE 오버샘플링을 적용하여 Decision Boundary를 재조정하고 재현율(Recall) 지표 개선.
-2. **Feature Selection**
-   * *Problem*: 590개의 센서 데이터 중 다중공선성을 유발하는 노이즈 변수로 인해 모델 해석력 저하.
-   * *Solution*: 분산 임계치(0.05)와 LightGBM Feature Importance를 융합하여 핵심 센서 35개 도출.
+## 해석
 
----
+- 21건은 오경보가 아니라 실제 불량을 놓친 미탐(FN)입니다.
+- 오경보(FP)는 5건입니다.
+- Feature Importance는 인과관계가 아니라 모델 내 예측 기여도이므로, 실제 공정 단계·장비·챔버 정보와 추가 검증해야 합니다.
+- 이전에 기재됐던 Recall 0.12/0.68/0.82 및 LightGBM 결과는 실행 코드로 재현되지 않아 삭제했습니다.
 
-## 5. How to Run
-```bash
-pip install -r requirements.txt
-python src/train_model.py
+## 현재 실험의 한계와 개선 방향
+
+현재 노트북은 결측치 보정과 VarianceThreshold를 데이터 분할 전에 수행하고, SMOTE를 교차검증 전에 적용합니다. 후속 실험에서는 전처리와 SMOTE를 Pipeline 내부에 배치하고, Validation 데이터에서 모델·임계값을 선택한 뒤 Test 데이터는 최종 평가에 한 번만 사용해야 합니다.
+
+실행 노트북: `01.secom_yield_prediction.ipynb`
